@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polls.Application", "Polls.Application\Polls.Application.csproj", "{589B2F10-EF8B-4139-A435-AC87FBFB7C93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polls.Service", "Polls.Service\Polls.Service.csproj", "{589B2F10-EF8B-4139-A435-AC87FBFB7C93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

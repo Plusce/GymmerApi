@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Polls.Application.Controllers;
+namespace Polls.Service.Controllers;
 
 [ApiController]
 [Route("[controller]")]
