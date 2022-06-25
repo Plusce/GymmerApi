@@ -1,4 +1,4 @@
-namespace Polls.Service;
+namespace Polls.Application;
 
 public class WeatherForecast
 {

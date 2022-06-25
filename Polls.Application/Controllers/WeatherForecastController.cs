@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Polls.Service.Controllers;
+namespace Polls.Application.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("[controller]")]
-[Authorize]
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
