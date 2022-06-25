@@ -16,6 +16,7 @@ public class BasicDbContext : Microsoft.EntityFrameworkCore.DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.SetupPoliticalParty();
         modelBuilder.SetupToTable();
     }
 }

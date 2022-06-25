@@ -16,14 +16,11 @@
     </ItemGroup>
     
     <ItemGroup>
+      <Folder Include="Persistence\SqliteMigrations" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Polls.Core\Polls.Core.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Persistence\SqliteMigrations" />
     </ItemGroup>
 
 </Project>
