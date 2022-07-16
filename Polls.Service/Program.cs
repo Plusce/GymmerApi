@@ -71,3 +71,5 @@ app.SetupDatabase();
 app.SeedDatabase();
 
 app.Run();
+
+public partial class Program { }
