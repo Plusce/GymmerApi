@@ -68,5 +68,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.SetupDatabase();
+app.SeedDatabase();
 
 app.Run();
