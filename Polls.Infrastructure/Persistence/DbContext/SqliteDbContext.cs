@@ -10,6 +10,6 @@ public class SqliteDbContext : BasicDbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+        optionsBuilder.UseSqlite(Configuration.GetConnectionString("DefaultConnection")!);
     }
 }
