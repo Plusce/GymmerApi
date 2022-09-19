@@ -1,13 +1,12 @@
-﻿using MediatR;
+﻿using Polls.Application.Features.PoliticalParty;
 
 namespace Polls.Application;
 
 public static class IoC
 {
-    public static IServiceCollection AddApplication(this IServiceCollection services)
+    public static WebApplication AddApplication(this WebApplication app)
     {
-        services.AddControllers();
-        services.AddMediatR(typeof(IoC).Assembly);
-        return services;
+        app.MapGet("/political-parties", ReadPoliticalPartyQueries.ReadPoliticalParties);
+        return app;
     }
 }

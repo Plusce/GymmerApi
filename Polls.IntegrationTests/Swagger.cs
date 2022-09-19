@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
-using System.Net;
+﻿using System.Net;
 using Polls.IntegrationTests;
 using Xunit;
 using Assert = Xunit.Assert;
@@ -14,7 +13,7 @@ public partial class Swagger
         await using var application = new PlaygroundApplication("Development");
 
         var client = application.CreateClient();
-        var response = await client.GetAsync("/PoliticalParty/");
+        var response = await client.GetAsync("/political-parties/");
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
