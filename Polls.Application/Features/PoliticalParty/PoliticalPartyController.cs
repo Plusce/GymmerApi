@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Polls.Application.Features.PoliticalParty.ReadPolitcalParties;
 
@@ -7,7 +6,7 @@ namespace Polls.Application.Features.PoliticalParty;
 
 [Authorize]
 [ApiController]
-[Route("[controller]")]
+[Route("political-parties")]
 public class PoliticalPartyController : ControllerBase
 {
     private readonly IMediator _mediator;

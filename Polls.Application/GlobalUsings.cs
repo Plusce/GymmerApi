@@ -1,6 +1,1 @@
-﻿namespace Polls.Application;
-
-public class GlobalUsings
-{
-    
-}
+﻿global using Mediator;

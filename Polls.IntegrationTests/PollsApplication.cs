@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.Hosting;
 using Polls.Infrastructure.Persistence.DbContext;
 
 namespace Polls.IntegrationTests;
@@ -27,6 +28,9 @@ internal class PlaygroundApplication : WebApplicationFactory<Program>
                     .UseApplicationServiceProvider(sp)
                     .Options;
             });
+
+            MvcServiceCollectionExtensions.AddMvc(services, options => options.Filters.Add(new AllowAnonymousFilter()));
+            
         });
 
         return base.CreateHost(builder);
