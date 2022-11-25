@@ -1,13 +1,14 @@
 ﻿using System.Net;
+using Polls.IntegrationTests;
 using Xunit;
 using Assert = Xunit.Assert;
 
-namespace Polls.IntegrationTests;
+namespace MinimalApiPlayground.Tests;
 
-public partial class PoliticalParties_Read_Tests
+public partial class Swagger
 {
     [Fact]
-    public async Task Read_PoliticalParties_SuccessfulResponse()
+    public async Task SwaggerUI_Responds_OK_In_Development()
     {
         await using var application = new PlaygroundApplication("Development");
 

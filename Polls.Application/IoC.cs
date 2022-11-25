@@ -1,11 +1,12 @@
-﻿namespace Polls.Application;
+﻿using Polls.Application.Features.PoliticalParty;
+
+namespace Polls.Application;
 
 public static class IoC
 {
-    public static IServiceCollection AddApplication(this IServiceCollection services)
+    public static WebApplication AddApplication(this WebApplication app)
     {
-        services.AddControllers();
-        services.AddMediator(options => options.ServiceLifetime = ServiceLifetime.Scoped);
-        return services;
+        app.MapGet("/political-parties", ReadPoliticalPartyQueries.ReadPoliticalParties);
+        return app;
     }
 }
