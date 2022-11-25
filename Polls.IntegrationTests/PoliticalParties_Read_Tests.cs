@@ -6,7 +6,7 @@ using Assert = Xunit.Assert;
 
 namespace MinimalApiPlayground.Tests;
 
-public partial class Swagger
+public partial class PoliticalParties_Read_Tests
 {
     [Fact]
     public async Task SwaggerUI_Responds_OK_In_Development()
@@ -14,7 +14,7 @@ public partial class Swagger
         await using var application = new PlaygroundApplication("Development");
 
         var client = application.CreateClient();
-        var response = await client.GetAsync("/PoliticalParty/");
+        var response = await client.GetAsync("/PoliticalParty_Read_Tests/");
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
