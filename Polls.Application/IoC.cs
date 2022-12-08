@@ -1,4 +1,4 @@
-﻿using Polls.Application.Features.PoliticalParty;
+﻿using Polls.Application.EndpointDefinitions.PoliticalParty;
 
 namespace Polls.Application;
 

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Polls.Infrastructure.Persistence.DbContext;
 
-namespace Polls.Application.Features.PoliticalParty;
+namespace Polls.Application.EndpointDefinitions.PoliticalParty;
 
 public class ReadPoliticalPartyQueries
 {

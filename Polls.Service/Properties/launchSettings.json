@@ -11,6 +11,7 @@
   "profiles": {
     "Polls.Application": {
       "commandName": "Project",
+      "hotReloadProfile": "aspnetcore",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
