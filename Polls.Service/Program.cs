@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Polls.Application;
+using Polls.Application.EndpointDefinitions.PoliticalParty;
 using Polls.Core.Extensions;
 using Polls.Service.EndpointDefinitions;
 using Polls.Service.Extensions;
@@ -22,7 +22,8 @@ builder.Services.AddAuthentication(options =>
     options.Audience = builder.Configuration["Auth0:Audience"];
 });
 
-builder.Services.AddEndpointDefinitions(typeof(SwaggerEndpointDefinition));
+builder.Services.AddEndpointDefinitions(typeof(SwaggerEndpointDefinition), 
+    typeof(PoliticalPartyEndpointDefinition));
 
 var app = builder.Build();
 
@@ -33,11 +34,11 @@ app.UseAuthorization();
 
 app.UseEndpointDefinitions();
 
-app.AddApplication();
-
 app.SetupDatabase();
 app.SeedDatabase();
 
 app.Run();
 
-public partial class Program { }
+public partial class Program
+{
+}
