@@ -1,4 +1,4 @@
-﻿using Polls.Core.Models;
+﻿using Polls.Core.Interfaces;
 using Microsoft.OpenApi.Models;
 
 namespace Polls.Service.EndpointDefinitions;

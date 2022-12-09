@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Polls.Core.Models;
+using Polls.Core.Interfaces;
 
 namespace Polls.Core.Extensions;
 

@@ -1,11 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Polls.Infrastructure.Persistence.DbContext;
+﻿using Polls.Core.Interfaces;
 
 namespace Polls.Application.EndpointDefinitions.PoliticalParty;
 
 public class ReadPoliticalPartyQueries
 {
-    public static readonly Func<BasicDbContext, CancellationToken, Task<IEnumerable<string?>>> ReadPoliticalParties =
-        async (dbContext, ct) =>
-            await dbContext.PoliticalParty.Select(party => party.Name).ToListAsync(ct);
+    internal static readonly Func<IPoliticalPartiesRepository, CancellationToken, Task<IResult>> ReadPoliticalParties =
+        async (repository, ct) =>
+        {
+            var politicalParties = (await repository.FindAllAsync(ct)).Select(party => party?.Name).ToList();
+            return politicalParties.Count < 1 ? Results.Empty : Results.Ok(politicalParties);
+        };
 }

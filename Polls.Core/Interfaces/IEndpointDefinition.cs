@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Polls.Core.Models;
+namespace Polls.Core.Interfaces;
 
 public interface IEndpointDefinition
 {
