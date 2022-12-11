@@ -2,9 +2,9 @@
 
 namespace Gymmer.Application.EndpointDefinitions.PoliticalParty;
 
-public class ReadPoliticalPartyQueries
+public class ReadExerciseQueries
 {
-    internal static readonly Func<IPoliticalPartiesRepository, CancellationToken, Task<IResult>> ReadPoliticalParties =
+    internal static readonly Func<IExercisesRepository, CancellationToken, Task<IResult>> ReadExercises =
         async (repository, ct) =>
         {
             var politicalParties = (await repository.FindAllAsync(ct)).Select(party => party?.Name).ToList();

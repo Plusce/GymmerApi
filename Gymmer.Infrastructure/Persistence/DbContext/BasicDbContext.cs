@@ -7,7 +7,7 @@ public class BasicDbContext : Microsoft.EntityFrameworkCore.DbContext
 {
     protected readonly IConfiguration Configuration;
     
-    public DbSet<PoliticalPartyModel> PoliticalParty => Set<PoliticalPartyModel>();
+    public DbSet<ExerciseModel> Exercise => Set<ExerciseModel>();
     
     protected BasicDbContext(IConfiguration configuration)
     {
@@ -16,7 +16,7 @@ public class BasicDbContext : Microsoft.EntityFrameworkCore.DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.SetupPoliticalParty();
+        modelBuilder.SetupExercise();
         modelBuilder.SetupToTable();
     }
 }

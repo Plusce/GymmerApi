@@ -7,12 +7,12 @@ public class PoliticalPartyEndpointDefinition : IEndpointDefinition
 {
     public void DefineServices(IServiceCollection services)
     {
-        services.AddScoped<IPoliticalPartiesRepository, PoliticalPartiesRepository>();
+        services.AddScoped<IExercisesRepository, ExercisesRepository>();
     }
 
     public void DefineEndpoints(WebApplication app)
     {
-        app.MapGet("/political-parties", ReadPoliticalPartyQueries.ReadPoliticalParties)
+        app.MapGet("/exercises", ReadExerciseQueries.ReadExercises)
             .Produces<IEnumerable<string?>>(); // FluentApi approach
     }
 }

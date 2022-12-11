@@ -1,0 +1,39 @@
+﻿using FluentAssertions;
+using Microsoft.AspNetCore.Http.HttpResults;
+using NSubstitute;
+using Gymmer.Application.EndpointDefinitions.PoliticalParty;
+using Gymmer.Core.Interfaces;
+using Gymmer.Core.Models;
+using Xunit;
+
+namespace Gymmer.UnitTests;
+
+public class ExerciseEndpointDefinition_Tests
+{
+    private readonly IExercisesRepository _exercisesRepository =
+        Substitute.For<IExercisesRepository>();
+
+    [Fact]
+    public async Task FindAllPoliticalParties_ReturnAll()
+    {
+        // Arrange
+        _exercisesRepository.FindAllAsync().ReturnsForAnyArgs(new List<ExerciseModel?>
+        {
+            new("Zakroki", "Spokojne tempo do tyłu i do przodu"),
+            new("Wyciskanie bokiem", "Ćwiczenie w celu otwierania 2x w tygodniu")
+        });
+
+        // Act
+        var result =
+            await ReadExerciseQueries.ReadExercises(_exercisesRepository, CancellationToken.None);
+
+        // Assert
+        result.As<Ok<List<string?>?>>().Value.Should()
+            .BeEquivalentTo(new List<ExerciseModel?>
+            {
+                new("Zakroki", "Spokojne tempo do tyłu i do przodu"),
+                new("Wyciskanie bokiem", "Ćwiczenie w celu otwierania 2x w tygodniu")
+            });
+        result.As<Ok<List<string?>?>>().StatusCode.Should().Be(200);
+    }
+}
