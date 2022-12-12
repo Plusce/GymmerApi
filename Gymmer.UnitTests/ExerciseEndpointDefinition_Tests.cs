@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using NSubstitute;
 using Gymmer.Application.EndpointDefinitions.PoliticalParty;
-using Gymmer.Core.Interfaces;
-using Gymmer.Core.Models;
+using Gymmer.Infrastructure.Persistence.Models;
+using Gymmer.Infrastructure.Persistence.Repository;
 using Xunit;
 
 namespace Gymmer.UnitTests;
@@ -25,7 +25,7 @@ public class ExerciseEndpointDefinition_Tests
 
         // Act
         var result =
-            await ReadExerciseQueries.ReadExercises(_exercisesRepository, CancellationToken.None);
+            await ExerciseQueries.Read(_exercisesRepository, CancellationToken.None);
 
         // Assert
         result.As<Ok<List<string?>?>>().Value.Should()

@@ -23,7 +23,7 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddEndpointDefinitions(typeof(SwaggerEndpointDefinition), 
-    typeof(PoliticalPartyEndpointDefinition));
+    typeof(ExerciseEndpointDefinition));
 
 var app = builder.Build();
 

@@ -1,5 +1,5 @@
-﻿using Gymmer.Core.Models;
-using Gymmer.Infrastructure.Persistence.Extensions;
+﻿using Gymmer.Infrastructure.Persistence.Extensions;
+using Gymmer.Infrastructure.Persistence.Models;
 
 namespace Gymmer.Infrastructure.Persistence.DbContext;
 

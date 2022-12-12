@@ -1,5 +1,5 @@
-﻿using Gymmer.Core.Models;
-using Gymmer.Infrastructure.Persistence.DbContext;
+﻿using Gymmer.Infrastructure.Persistence.DbContext;
+using Gymmer.Infrastructure.Persistence.Models;
 using Microsoft.EntityFrameworkCore.TestUtilities;
 
 namespace Gymmer.Infrastructure.Persistence.Seed;
