@@ -1,5 +1,6 @@
+using FluentValidation;
+using Gymmer.Application.EndpointDefinitions.Exercise;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Gymmer.Application.EndpointDefinitions.PoliticalParty;
 using Gymmer.Core.Extensions;
 using Gymmer.Service.EndpointDefinitions;
 using Gymmer.Service.Extensions;
@@ -21,6 +22,8 @@ builder.Services.AddAuthentication(options =>
     options.Authority = $"https://{builder.Configuration["Auth0:Domain"]}/";
     options.Audience = builder.Configuration["Auth0:Audience"];
 });
+
+builder.Services.AddValidatorsFromAssemblyContaining<PostExerciseValidator>();
 
 builder.Services.AddEndpointDefinitions(typeof(SwaggerEndpointDefinition), 
     typeof(ExerciseEndpointDefinition));

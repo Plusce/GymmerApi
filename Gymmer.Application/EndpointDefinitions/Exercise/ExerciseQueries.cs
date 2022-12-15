@@ -1,12 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Gymmer.Application.EndpointDefinitions.Exercise;
-using Gymmer.Core.Interfaces;
-using Gymmer.Core.Models;
-using Gymmer.Infrastructure.Persistence.Models;
+﻿using Gymmer.Infrastructure.Persistence.Models;
 using Gymmer.Infrastructure.Persistence.Repository;
-using MiniValidation;
 
-namespace Gymmer.Application.EndpointDefinitions.PoliticalParty;
+namespace Gymmer.Application.EndpointDefinitions.Exercise;
 
 public class ExerciseQueries
 {
@@ -20,13 +15,6 @@ public class ExerciseQueries
     internal static readonly Func<PostExerciseCommand, IExercisesRepository, CancellationToken, Task<IResult>> Post =
         async (command, repository, ct) =>
         {
-            var validator = new PostExerciseValidator(repository, command);
-
-            if (!MiniValidator.TryValidate(validator, out var errors))
-            {
-                return Results.ValidationProblem(errors);
-            }
-
             var newExercise = new ExerciseModel(command.Name, command.Description);
             
             await repository.AddAsync(newExercise, ct);

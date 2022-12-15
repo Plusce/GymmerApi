@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
+using Gymmer.Application.EndpointDefinitions.Exercise;
 using Microsoft.AspNetCore.Http.HttpResults;
 using NSubstitute;
-using Gymmer.Application.EndpointDefinitions.PoliticalParty;
 using Gymmer.Infrastructure.Persistence.Models;
 using Gymmer.Infrastructure.Persistence.Repository;
 using Xunit;
@@ -29,11 +29,7 @@ public class ExerciseEndpointDefinition_Tests
 
         // Assert
         result.As<Ok<List<string?>?>>().Value.Should()
-            .BeEquivalentTo(new List<ExerciseModel?>
-            {
-                new("Zakroki", "Spokojne tempo do tyłu i do przodu"),
-                new("Wyciskanie bokiem", "Ćwiczenie w celu otwierania 2x w tygodniu")
-            });
+            .BeEquivalentTo("Zakroki", "Wyciskanie bokiem");
         result.As<Ok<List<string?>?>>().StatusCode.Should().Be(200);
     }
 }

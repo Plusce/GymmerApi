@@ -1,8 +1,10 @@
-﻿using Gymmer.Core.Interfaces;
+﻿using FluentValidation;
+using Gymmer.Core.Filters;
+using Gymmer.Core.Interfaces;
 using Gymmer.Infrastructure.Persistence.Models;
 using Gymmer.Infrastructure.Persistence.Repository;
 
-namespace Gymmer.Application.EndpointDefinitions.PoliticalParty;
+namespace Gymmer.Application.EndpointDefinitions.Exercise;
 
 public class ExerciseEndpointDefinition : IEndpointDefinition
 {
@@ -16,6 +18,7 @@ public class ExerciseEndpointDefinition : IEndpointDefinition
         app.MapGet("/exercises", ExerciseQueries.Read)
             .Produces<IEnumerable<string?>>();
         app.MapPost("/exercises", ExerciseQueries.Post)
-            .Produces<ExerciseModel>();
+            .Produces<ExerciseModel>()
+            .AddEndpointFilter<ValidationFilter<PostExerciseCommand>>();
     }
 }
