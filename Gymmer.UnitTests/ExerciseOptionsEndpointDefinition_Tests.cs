@@ -14,18 +14,18 @@ public class ExerciseOptionsEndpointDefinition_Tests
         Substitute.For<IExerciseOptionsRepository>();
 
     [Fact]
-    public async Task FindAllOptions_ReturnAll()
+    public async Task FindAll_ReturnAll()
     {
         // Arrange
         _exerciseOptionsRepository.FindAllAsync().ReturnsForAnyArgs(new List<ExerciseOptionModel?>
         {
-            new("Zakroki", "Spokojne tempo do tyłu i do przodu"),
-            new("Wyciskanie bokiem", "Ćwiczenie w celu otwierania 2x w tygodniu")
+            new (){ Name = "Zakroki", Description = "Spokojne tempo do tyłu i do przodu" },
+            new (){ Name = "Wyciskanie bokiem", Description = "Ćwiczenie w celu otwierania 2x w tygodniu" }
         });
 
         // Act
         var result =
-            await ExerciseOptionsQueries.Get(_exerciseOptionsRepository, CancellationToken.None);
+            await ExerciseOptionsApiQueries.Get(_exerciseOptionsRepository, CancellationToken.None);
 
         // Assert
         result.As<Ok<List<string?>?>>().Value.Should()

@@ -1,15 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using FluentValidation;
-using Gymmer.Infrastructure.Persistence.Repository;
-
-namespace Gymmer.Application.EndpointDefinitions.ExerciseOptions;
+﻿namespace Gymmer.Application.EndpointDefinitions.ExerciseOptions;
 
 public record PostExerciseOptionCommand
 {
-    [Required, MinLength(3), MaxLength(200)]
-    public string? Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 
-    [MaxLength(500)] public string? Description { get; set; }
+    public string? Description { get; set; }
 }
 
 public class PostExerciseOptionValidator : AbstractValidator<PostExerciseOptionCommand>
@@ -17,8 +12,14 @@ public class PostExerciseOptionValidator : AbstractValidator<PostExerciseOptionC
     public PostExerciseOptionValidator(IExerciseOptionsRepository repository)
     {
         RuleFor(cmd => cmd.Name)
+            .Cascade(CascadeMode.Stop)
+            .MinimumLength(2)
+            .MaximumLength(200)
             .Must(name => repository.FindByName(name) == null)
             .WithMessage(cmd =>
                 $"Cannot name an exercise option with '{cmd.Name}' name. ExerciseOption option with this specific name has been already added.");
+
+        RuleFor(cmd => cmd.Description)
+            .MaximumLength(500);
     }
 }

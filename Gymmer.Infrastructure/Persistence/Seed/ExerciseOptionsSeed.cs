@@ -14,51 +14,99 @@ public static class ExerciseOptionsSeed
         {
             {
                 "Pompka",
-                new ExerciseOptionModel("Pompka", "3 sekundy schodzisz w dół")
+                new()
+                {
+                    Name = "Pompka",
+                    Description = "3 sekundy schodzisz w dół"
+                }
             },
             {
                 "Martwy ciąg rumuński",
-                new ExerciseOptionModel("Martwy ciąg rumuński", "Pupa do tyłu → pupa do przodu")
+                new()
+                {
+                    Name = "Martwy ciąg rumuński",
+                    Description = "Pupa do tyłu → pupa do przodu"
+                }
             },
             {
                 "Wiosło hantlami",
-                new ExerciseOptionModel("Wiosło hantlami", "Barki daleko od uszu")
+                new()
+                {
+                    Name = "Wiosło hantlami",
+                    Description = "Barki daleko od uszu"
+                }
             },
             {
                 "Przysiad zakroczny (w miejscu)",
-                new ExerciseOptionModel("Przysiad zakroczny (w miejscu)", "Pięta z tyłu cały czas wysoko")
+                new()
+                {
+                    Name = "Przysiad zakroczny (w miejscu)",
+                    Description = "Pięta z tyłu cały czas wysoko"
+                }
             },
             {
                 "Ściąganie wyciągu jednorącz",
-                new ExerciseOptionModel("Ściąganie wyciągu jednorącz", "Najpierw lewa strona, potem prawa")
+                new()
+                {
+                    Name = "Ściąganie wyciągu jednorącz",
+                    Description = "Najpierw lewa strona, potem prawa"
+                }
             },
             {
                 "Wyciskanie leżąc bokiem",
-                new ExerciseOptionModel("Wyciskanie leżąc bokiem", "Najpierw lewa strona, potem prawa")
+                new()
+                {
+                    Name = "Wyciskanie leżąc bokiem",
+                    Description = "Najpierw lewa strona, potem prawa"
+                }
             },
             {
                 "Podciąganie nachwyt",
-                new ExerciseOptionModel("Podciąganie nachwyt", "Wydech do góry")
+                new()
+                {
+                    Name = "Podciąganie nachwyt",
+                    Description = "Wydech do góry"
+                }
             },
             {
                 "Przyciąganie \"kocyka\" w leżeniu tyłem",
-                new ExerciseOptionModel("Przyciąganie \"kocyka\" w leżeniu tyłem", "Powoli odjeżdżasz, szybciej do siebie")
+                new()
+                {
+                    Name = "Przyciąganie \"kocyka\" w leżeniu tyłem",
+                    Description = "Powoli odjeżdżasz, szybciej do siebie"
+                }
             },
             {
                 "Wyciskanie końca sztangi",
-                new ExerciseOptionModel("Wyciskanie końca sztangi", "Lekkie pochylenie na końcu ruchu")
+                new()
+                {
+                    Name = "Wyciskanie końca sztangi",
+                    Description = "Lekkie pochylenie na końcu ruchu"
+                }
             },
             {
                 "Rozpiętki",
-                new ExerciseOptionModel("Rozpiętki", "Wdech w dół, wydech do góry")
+                new()
+                {
+                    Name = "Rozpiętki",
+                    Description = "Wdech w dół, wydech do góry"
+                }
             },
             {
                 "Zakroki",
-                new ExerciseOptionModel("Zakroki", "Spokojne tempo do tyłu i do przodu")
+                new()
+                {
+                    Name = "Zakroki",
+                    Description = "Spokojne tempo do tyłu i do przodu"
+                }
             },
             {
                 "Wyciskanie bokiem",
-                new ExerciseOptionModel("Wyciskanie bokiem", "Ćwiczenie w celu otwierania 2x w tygodniu")
+                new()
+                {
+                    Name = "Wyciskanie bokiem",
+                    Description = "Ćwiczenie w celu otwierania 2x w tygodniu"
+                }
             },
         };
 

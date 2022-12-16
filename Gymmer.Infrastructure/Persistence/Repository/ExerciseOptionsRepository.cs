@@ -33,15 +33,40 @@ public class ExerciseOptionsRepository : IExerciseOptionsRepository
         return ReadOnlyQuery().FirstOrDefault(x => x.Name == name);
     }
 
-    public async Task AddAsync(ExerciseOptionModel optionModel, CancellationToken ct)
+    public async Task<ExerciseOptionModel> AddAsync(ExerciseOptionModel model, CancellationToken ct)
     {
-        await _dbContext.ExerciseOption.AddAsync(optionModel, ct);
+        await _dbContext.ExerciseOption.AddAsync(model, ct);
+        await _dbContext.SaveChangesAsync(ct);
+
+        return model;
+    }
+    
+    public async Task<ExerciseOptionModel> UpdateAsync(ExerciseOptionModel model, CancellationToken ct)
+    {
+        _dbContext.Update(model);
+        await _dbContext.SaveChangesAsync(ct);
+
+        return model;
+    }
+    
+    public async Task RemoveAsync(long id, CancellationToken ct)
+    {
+        var exerciseOption = await FindByIdAsync(id, ct);
+
+        if (exerciseOption == null)
+        {
+            return;
+        }
+
+        _dbContext.Remove(exerciseOption);
         await _dbContext.SaveChangesAsync(ct);
     }
 }
 
 public interface IExerciseOptionsRepository : IGenericRepository<ExerciseOptionModel>
 {
-    public ExerciseOptionModel? FindByName(string? name);
-    public Task AddAsync(ExerciseOptionModel optionModel, CancellationToken ct);
+    ExerciseOptionModel? FindByName(string? name);
+    Task<ExerciseOptionModel> AddAsync(ExerciseOptionModel optionModel, CancellationToken ct);
+    Task<ExerciseOptionModel> UpdateAsync(ExerciseOptionModel optionModel, CancellationToken ct);
+    Task RemoveAsync(long id, CancellationToken ct);
 }
