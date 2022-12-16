@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography.Xml;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
 
 namespace Gymmer.Core.Extensions;
 

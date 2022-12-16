@@ -6,15 +6,15 @@ public static class ModelBuilderExtensions
 {
     public static ModelBuilder SetupExercise(this ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ExerciseModel>().HasKey(p => p.Id);
-        modelBuilder.Entity<ExerciseModel>().Property(p => p.Name)
+        modelBuilder.Entity<ExerciseOptionModel>().HasKey(p => p.Id);
+        modelBuilder.Entity<ExerciseOptionModel>().Property(p => p.Name)
             .IsRequired()
             .HasMaxLength(200);
-        modelBuilder.Entity<ExerciseModel>().Property(p => p.Description)
+        modelBuilder.Entity<ExerciseOptionModel>().Property(p => p.Description)
             .HasMaxLength(500);
-        modelBuilder.Entity<ExerciseModel>().Property(p => p.CreationDate)
+        modelBuilder.Entity<ExerciseOptionModel>().Property(p => p.CreationDate)
             .HasConversion<ValueConverters.DateTimeUtcConverter>();
-        modelBuilder.Entity<ExerciseModel>().Property(p => p.EditionDate)
+        modelBuilder.Entity<ExerciseOptionModel>().Property(p => p.EditionDate)
             .HasConversion<ValueConverters.DateTimeUtcConverter>();
 
         return modelBuilder;
@@ -22,7 +22,7 @@ public static class ModelBuilderExtensions
     
     public static ModelBuilder SetupToTable(this ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ExerciseModel>().ToTable("Exercise");
+        modelBuilder.Entity<ExerciseOptionModel>().ToTable("ExerciseOption");
 
         return modelBuilder;
     }

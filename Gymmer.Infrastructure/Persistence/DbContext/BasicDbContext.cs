@@ -7,7 +7,7 @@ public class BasicDbContext : Microsoft.EntityFrameworkCore.DbContext
 {
     protected readonly IConfiguration Configuration;
     
-    public DbSet<ExerciseModel> Exercise => Set<ExerciseModel>();
+    public DbSet<ExerciseOptionModel> ExerciseOption => Set<ExerciseOptionModel>();
     
     protected BasicDbContext(IConfiguration configuration)
     {

@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Gymmer.Application.EndpointDefinitions.ExerciseOptions;
 using Gymmer.Core.Filters;
 using Gymmer.Core.Interfaces;
 using Gymmer.Infrastructure.Persistence.Models;
@@ -10,15 +11,15 @@ public class ExerciseOptionsEndpointDefinition : IEndpointDefinition
 {
     public void DefineServices(IServiceCollection services)
     {
-        services.AddScoped<IExercisesRepository, ExercisesRepository>();
+        services.AddScoped<IExerciseOptionsRepository, ExerciseOptionsRepository>();
     }
 
     public void DefineEndpoints(WebApplication app)
     {
-        app.MapGet("/exercises", ExerciseQueries.Read)
+        app.MapGet("/exercise-options", ExerciseOptionsQueries.Get)
             .Produces<IEnumerable<string?>>();
-        app.MapPost("/exercises", ExerciseQueries.Post)
-            .Produces<ExerciseModel>()
-            .AddEndpointFilter<ValidationFilter<PostExerciseCommand>>();
+        app.MapPost("/exercise-options", ExerciseOptionsQueries.Post)
+            .Produces<ExerciseOptionModel>()
+            .AddEndpointFilter<ValidationFilter<PostExerciseOptionCommand>>();
     }
 }

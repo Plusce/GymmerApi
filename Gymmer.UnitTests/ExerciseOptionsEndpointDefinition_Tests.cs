@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Gymmer.Application.EndpointDefinitions.Exercise;
+using Gymmer.Application.EndpointDefinitions.ExerciseOptions;
 using Microsoft.AspNetCore.Http.HttpResults;
 using NSubstitute;
 using Gymmer.Infrastructure.Persistence.Models;
@@ -8,16 +9,16 @@ using Xunit;
 
 namespace Gymmer.UnitTests;
 
-public class ExerciseEndpointDefinition_Tests
+public class ExerciseOptionsEndpointDefinition_Tests
 {
-    private readonly IExercisesRepository _exercisesRepository =
-        Substitute.For<IExercisesRepository>();
+    private readonly IExerciseOptionsRepository _exerciseOptionsRepository =
+        Substitute.For<IExerciseOptionsRepository>();
 
     [Fact]
-    public async Task FindAllPoliticalParties_ReturnAll()
+    public async Task FindAllOptions_ReturnAll()
     {
         // Arrange
-        _exercisesRepository.FindAllAsync().ReturnsForAnyArgs(new List<ExerciseModel?>
+        _exerciseOptionsRepository.FindAllAsync().ReturnsForAnyArgs(new List<ExerciseOptionModel?>
         {
             new("Zakroki", "Spokojne tempo do tyłu i do przodu"),
             new("Wyciskanie bokiem", "Ćwiczenie w celu otwierania 2x w tygodniu")
@@ -25,7 +26,7 @@ public class ExerciseEndpointDefinition_Tests
 
         // Act
         var result =
-            await ExerciseQueries.Read(_exercisesRepository, CancellationToken.None);
+            await ExerciseOptionsQueries.Get(_exerciseOptionsRepository, CancellationToken.None);
 
         // Assert
         result.As<Ok<List<string?>?>>().Value.Should()

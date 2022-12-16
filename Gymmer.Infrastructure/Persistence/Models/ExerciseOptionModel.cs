@@ -3,9 +3,9 @@ using Gymmer.Core.Models;
 
 namespace Gymmer.Infrastructure.Persistence.Models;
 
-public class ExerciseModel : Entity
+public class ExerciseOptionModel : Entity
 {
-    public ExerciseModel(string? name, string? description = null)
+    public ExerciseOptionModel(string? name, string? description = null)
     {
         Name = name;
         Description = description;
