@@ -17,7 +17,7 @@ public class PostExerciseOptionValidator : AbstractValidator<PostExerciseOptionC
     public PostExerciseOptionValidator(IExerciseOptionsRepository repository)
     {
         RuleFor(cmd => cmd.Name)
-            .Must(name => repository.FindByName(name) != null)
+            .Must(name => repository.FindByName(name) == null)
             .WithMessage(cmd =>
                 $"Cannot name an exercise option with '{cmd.Name}' name. ExerciseOption option with this specific name has been already added.");
     }

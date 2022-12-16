@@ -30,7 +30,7 @@ public class ExerciseOptionsRepository : IExerciseOptionsRepository
 
     public ExerciseOptionModel? FindByName(string? name)
     {
-        return ReadOnlyQuery().FirstOrDefault(exercise => exercise.Name == name);
+        return ReadOnlyQuery().FirstOrDefault(x => x.Name == name);
     }
 
     public async Task AddAsync(ExerciseOptionModel optionModel, CancellationToken ct)
