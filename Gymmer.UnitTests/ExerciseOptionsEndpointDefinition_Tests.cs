@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using Gymmer.Application.EndpointDefinitions.Exercise;
 using Gymmer.Application.EndpointDefinitions.ExerciseOptions;
 using Microsoft.AspNetCore.Http.HttpResults;
 using NSubstitute;

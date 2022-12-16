@@ -1,11 +1,9 @@
-﻿using FluentValidation;
-using Gymmer.Application.EndpointDefinitions.ExerciseOptions;
-using Gymmer.Core.Filters;
+﻿using Gymmer.Core.Filters;
 using Gymmer.Core.Interfaces;
 using Gymmer.Infrastructure.Persistence.Models;
 using Gymmer.Infrastructure.Persistence.Repository;
 
-namespace Gymmer.Application.EndpointDefinitions.Exercise;
+namespace Gymmer.Application.EndpointDefinitions.ExerciseOptions;
 
 public class ExerciseOptionsEndpointDefinition : IEndpointDefinition
 {
