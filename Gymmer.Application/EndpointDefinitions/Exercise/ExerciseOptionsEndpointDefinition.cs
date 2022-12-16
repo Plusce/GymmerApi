@@ -6,7 +6,7 @@ using Gymmer.Infrastructure.Persistence.Repository;
 
 namespace Gymmer.Application.EndpointDefinitions.Exercise;
 
-public class ExerciseEndpointDefinition : IEndpointDefinition
+public class ExerciseOptionsEndpointDefinition : IEndpointDefinition
 {
     public void DefineServices(IServiceCollection services)
     {

@@ -26,7 +26,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddValidatorsFromAssemblyContaining<PostExerciseValidator>();
 
 builder.Services.AddEndpointDefinitions(typeof(SwaggerEndpointDefinition), 
-    typeof(ExerciseEndpointDefinition));
+    typeof(ExerciseOptionsEndpointDefinition));
 
 var app = builder.Build();
 
