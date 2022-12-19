@@ -1,4 +1,6 @@
-﻿namespace Gymmer.Application.EndpointDefinitions.ExerciseOptions;
+﻿using Gymmer.Core.Extensions;
+
+namespace Gymmer.Application.EndpointDefinitions.ExerciseOptions;
 
 public record PostExerciseOptionCommand
 {
@@ -16,8 +18,9 @@ public class PostExerciseOptionValidator : AbstractValidator<PostExerciseOptionC
             .MinimumLength(2)
             .MaximumLength(200)
             .Must(name => repository.FindByName(name) == null)
-            .WithMessage(cmd =>
-                $"Cannot name an exercise option with '{cmd.Name}' name. ExerciseOption option with this specific name has been already added.");
+            .WithMessage(cmd => ExerciseOptionValidationMessages
+                .Duplicated
+                .AddParams(cmd.Name));
 
         RuleFor(cmd => cmd.Description)
             .MaximumLength(500);

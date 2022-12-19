@@ -1,13 +1,12 @@
 ﻿using FluentAssertions;
 using Gymmer.Application.EndpointDefinitions.ExerciseOptions;
-using Microsoft.AspNetCore.Http.HttpResults;
-using NSubstitute;
 using Gymmer.Infrastructure.Persistence.Models;
 using Gymmer.Infrastructure.Persistence.Repository;
+using Microsoft.AspNetCore.Http.HttpResults;
+using NSubstitute;
 using NSubstitute.ReturnsExtensions;
-using Xunit;
 
-namespace Gymmer.UnitTests;
+namespace Gymmer.UnitTests.ExerciseOptions;
 
 public class ExerciseOptionsEndpointDefinition_Tests
 {
