@@ -1,11 +1,10 @@
 ﻿using FluentAssertions;
 using Gymmer.Application.EndpointDefinitions.ExerciseOptions;
 using Gymmer.Core.Extensions;
-using Gymmer.Infrastructure.Persistence.Models;
 using Gymmer.Infrastructure.Persistence.Repository;
 using NSubstitute;
 
-namespace Gymmer.UnitTests.ExerciseOptions;
+namespace Gymmer.UnitTests.EndpointDefinitions.ExerciseOptions;
 
 public class PostExerciseOptionValidator_Tests
 {
@@ -13,7 +12,7 @@ public class PostExerciseOptionValidator_Tests
         Substitute.For<IExerciseOptionsRepository>();
     
     [Fact]
-    public void ValidateAsync_ShouldNotBePossibleToDuplicate_ExerciseOptionName()
+    public void ValidateAsync_NoPossibleToDuplicate_ExerciseOptionName()
     {
         // Arrange
         var command = new PostExerciseOptionCommand

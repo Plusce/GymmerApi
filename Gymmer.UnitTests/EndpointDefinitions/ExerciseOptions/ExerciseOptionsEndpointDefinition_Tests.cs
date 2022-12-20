@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using NSubstitute;
 using NSubstitute.ReturnsExtensions;
 
-namespace Gymmer.UnitTests.ExerciseOptions;
+namespace Gymmer.UnitTests.EndpointDefinitions.ExerciseOptions;
 
 public class ExerciseOptionsEndpointDefinition_Tests
 {

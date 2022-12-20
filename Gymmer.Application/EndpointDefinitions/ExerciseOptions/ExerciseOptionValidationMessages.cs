@@ -2,7 +2,7 @@
 
 namespace Gymmer.Application.EndpointDefinitions.ExerciseOptions;
 
-public record ExerciseOptionValidationMessages(string Message) : ValidationMessage(Message)
+public sealed record ExerciseOptionValidationMessages(string Message) : ValidationMessage(Message)
 {
     public static readonly ExerciseOptionValidationMessages Duplicated =
         new(

@@ -35,4 +35,8 @@
       <ProjectReference Include="..\Gymmer.Core\Gymmer.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="EndpointDefinitions" />
+    </ItemGroup>
+
 </Project>
