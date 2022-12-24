@@ -38,8 +38,8 @@ public class Tests
 
     private class DependencyAssertionResult
     {
-        public bool Success { get; init; }
-        public string Message { get; init; }
+        public required bool Success { get; init; }
+        public required string Message { get; init; }
     }
 
     private DependencyAssertionResult ValidateServices(List<ServiceDescriptor> services)

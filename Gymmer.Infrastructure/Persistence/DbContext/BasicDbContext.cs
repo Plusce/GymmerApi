@@ -9,6 +9,8 @@ public class BasicDbContext : Microsoft.EntityFrameworkCore.DbContext
     
     public DbSet<ExerciseOptionModel> ExerciseOption => Set<ExerciseOptionModel>();
     
+    public DbSet<TrainingDefinitionModel> TrainingDefinition => Set<TrainingDefinitionModel>();
+    
     protected BasicDbContext(IConfiguration configuration)
     {
         Configuration = configuration;

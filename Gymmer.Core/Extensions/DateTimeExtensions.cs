@@ -4,7 +4,7 @@ public static class DateTimeExtensions
 {
     public static DateTime? SetKindUtc(this DateTime? dataTime)
     {
-        return SetKindUtc(dataTime.GetValueOrDefault(DateTime.Now));
+        return SetKindUtc(dataTime.GetValueOrDefault(DateTime.UtcNow));
     }
 
     public static DateTime SetKindUtc(this DateTime dateTime)
