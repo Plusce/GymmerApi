@@ -9,6 +9,8 @@ namespace Gymmer.Application.EndpointDefinitions.TrainingDefinition;
 
 public class TrainingDefinitionsEndpointDefinition : IEndpointDefinition
 {
+    public static string BasePath { get; } = "/training-definitions";
+
     public void DefineServices(IServiceCollection services)
     {
         services.AddScoped<ITrainingDefinitionsRepository, TrainingDefinitionsRepository>();
@@ -16,11 +18,11 @@ public class TrainingDefinitionsEndpointDefinition : IEndpointDefinition
 
     public void DefineEndpoints(WebApplication app)
     {
-        app.MapGet("/training-definitions", GetTrainingDefinition.Query)
+        app.MapGet(BasePath, GetTrainingDefinition.Query)
             .Produces<IEnumerable<string?>>();
-        app.MapPost("/training-definitions", PostTrainingDefinition.Query)
+        app.MapPost(BasePath, PostTrainingDefinition.Query)
             .Produces<TrainingDefinitionModel>()
             .AddEndpointFilter<ValidationFilter<PostTrainingDefinitionCommand>>();
-        app.MapDelete("training-definitions", DeleteTrainingDefinition.Query);
+        app.MapDelete(BasePath, DeleteTrainingDefinition.Query);
     }
 }

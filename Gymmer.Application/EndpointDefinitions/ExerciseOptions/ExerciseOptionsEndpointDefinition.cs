@@ -7,6 +7,8 @@ namespace Gymmer.Application.EndpointDefinitions.ExerciseOptions;
 
 public class ExerciseOptionsEndpointDefinition : IEndpointDefinition
 {
+    public static string BasePath { get; } = "/exercise-options";
+
     public void DefineServices(IServiceCollection services)
     {
         services.AddScoped<IExerciseOptionsRepository, ExerciseOptionsRepository>();
@@ -15,14 +17,14 @@ public class ExerciseOptionsEndpointDefinition : IEndpointDefinition
 
     public void DefineEndpoints(WebApplication app)
     {
-        app.MapGet("/exercise-options", GetExerciseOption.Query)
+        app.MapGet(BasePath, GetExerciseOption.Query)
             .Produces<IEnumerable<string?>>();
-        app.MapPost("/exercise-options", PostExerciseOption.Query)
+        app.MapPost(BasePath, PostExerciseOption.Query)
             .Produces<ExerciseOptionModel>()
             .AddEndpointFilter<ValidationFilter<PostExerciseOptionCommand>>();
-        app.MapPut("/exercise-options", PutExerciseOption.Query)
+        app.MapPut(BasePath, PutExerciseOption.Query)
             .Produces<ExerciseOptionModel>()
             .AddEndpointFilter<ValidationFilter<PutExerciseOptionCommand>>();
-        app.MapDelete("/exercise-options", DeleteExerciseOption.Query);
+        app.MapDelete(BasePath, DeleteExerciseOption.Query);
     }
 }
