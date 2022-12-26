@@ -16,11 +16,11 @@ public class TrainingDefinitionsEndpointDefinition : IEndpointDefinition
 
     public void DefineEndpoints(WebApplication app)
     {
-        app.MapGet("/exercise-options", GetTrainingDefinition.Query)
+        app.MapGet("/training-definitions", GetTrainingDefinition.Query)
             .Produces<IEnumerable<string?>>();
-        app.MapPost("/exercise-options", PostTrainingDefinition.Query)
-            .Produces<ExerciseOptionModel>()
-            .AddEndpointFilter<ValidationFilter<PostExerciseOptionCommand>>();
-        app.MapDelete("/exercise-options", DeleteTrainingDefinition.Query);
+        app.MapPost("/training-definitions", PostTrainingDefinition.Query)
+            .Produces<TrainingDefinitionModel>()
+            .AddEndpointFilter<ValidationFilter<PostTrainingDefinitionCommand>>();
+        app.MapDelete("training-definitions", DeleteTrainingDefinition.Query);
     }
 }

@@ -43,7 +43,10 @@ public class ExerciseOptionsEndpointDefinition_Tests
 
         // Act
         var result =
-            await PostExerciseOption.Query(new PostExerciseOptionCommand(),
+            await PostExerciseOption.Query(new PostExerciseOptionCommand
+                {
+                    Name = "Pompka"
+                },
                 _exerciseOptionsRepository,
                 CancellationToken.None);
 
@@ -59,6 +62,7 @@ public class ExerciseOptionsEndpointDefinition_Tests
             .FindByIdAsync(Arg.Any<long>(), CancellationToken.None)
             .Returns(new ExerciseOptionModel
             {
+                Id = 1,
                 Name = "Pompka"
             });
         _exerciseOptionsRepository
@@ -67,7 +71,11 @@ public class ExerciseOptionsEndpointDefinition_Tests
 
         // Act
         var result =
-            await PutExerciseOption.Query(new PutExerciseOptionCommand(),
+            await PutExerciseOption.Query(new PutExerciseOptionCommand
+                {
+                    Id = 1,
+                    Name = "Pompka"
+                },
                 _exerciseOptionsRepository,
                 CancellationToken.None);
 

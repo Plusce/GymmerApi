@@ -15,6 +15,7 @@ public class Tests
         {
             (typeof(BasicDbContext), typeof(SqliteDbContext), ServiceLifetime.Scoped),
             (typeof(IExerciseOptionsRepository), typeof(ExerciseOptionsRepository), ServiceLifetime.Scoped),
+            (typeof(ITrainingDefinitionsRepository), typeof(TrainingDefinitionsRepository), ServiceLifetime.Scoped),
             (typeof(IPutExerciseOptionValidationService), typeof(PutExerciseOptionValidationService), ServiceLifetime.Transient)
         };
     

@@ -16,9 +16,8 @@ public static class PutExerciseOption
 
 public class PutExerciseOptionCommand
 {
-    public long Id { get; set; }
-
-    public string Name { get; set; } = string.Empty;
+    public required long Id { get; set; }
+    public required string Name { get; set; } = string.Empty;
     public string? Description { get; set; }
 }
 

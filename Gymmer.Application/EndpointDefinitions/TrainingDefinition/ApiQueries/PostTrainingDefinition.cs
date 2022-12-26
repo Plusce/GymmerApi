@@ -1,25 +1,21 @@
-﻿using Gymmer.Application.EndpointDefinitions.ExerciseOptions;
-using Gymmer.Application.EndpointDefinitions.ExerciseOptions.ApiQueries;
-using Gymmer.Core.Extensions;
+﻿using Gymmer.Core.Extensions;
 
 namespace Gymmer.Application.EndpointDefinitions.TrainingDefinition.ApiQueries;
 
 internal static class PostTrainingDefinition
 {
     public static readonly
-        Func<PostExerciseOptionCommand, ITrainingDefinitionsRepository, CancellationToken, Task<IResult>> Query =
+        Func<PostTrainingDefinitionCommand, ITrainingDefinitionsRepository, CancellationToken, Task<IResult>> Query =
             async (command, repository, ct) =>
             {
                 var result = await repository.AddAsync(command.ToAddModel(), ct);
-                return Results.Created("/exercise-options", result);
+                return Results.Created("/training-definitions", result);
             };
 }
 
 public record PostTrainingDefinitionCommand
 {
-    public string Name { get; set; } = string.Empty;
-
-    public string? Description { get; set; }
+    public required string Name { get; set; }
 }
 
 public class PostTrainingDefinitionValidator : AbstractValidator<PostTrainingDefinitionCommand>
@@ -28,10 +24,10 @@ public class PostTrainingDefinitionValidator : AbstractValidator<PostTrainingDef
     {
         RuleFor(cmd => cmd.Name)
             .Cascade(CascadeMode.Stop)
-            .MinimumLength(2)
+            .MinimumLength(1)
             .MaximumLength(200)
             .Must(name => repository.FindByName(name) == null)
-            .WithMessage(cmd => ExerciseOptionValidationMessages
+            .WithMessage(cmd => TrainingDefinitionsValidationMessages
                 .Duplicated
                 .AddParams(cmd.Name));
     }
