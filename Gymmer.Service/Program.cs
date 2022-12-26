@@ -1,5 +1,6 @@
 using FluentValidation;
 using Gymmer.Application.EndpointDefinitions.ExerciseOptions;
+using Gymmer.Application.EndpointDefinitions.ExerciseOptions.ApiQueries;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Gymmer.Core.Extensions;
 using Gymmer.Service.EndpointDefinitions;

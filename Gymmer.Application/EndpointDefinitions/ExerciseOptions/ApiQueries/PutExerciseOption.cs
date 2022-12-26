@@ -1,6 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Gymmer.Application.EndpointDefinitions.ExerciseOptions;
+namespace Gymmer.Application.EndpointDefinitions.ExerciseOptions.ApiQueries;
+
+public static class PutExerciseOption
+{
+    internal static readonly Func<PutExerciseOptionCommand, IExerciseOptionsRepository, CancellationToken, Task<IResult>>
+        Query =
+            async (command, repository, ct) =>
+            {
+                var entity = await repository.FindByIdAsync(command.Id);
+                var result = await repository.UpdateAsync(entity!.ToUpdateModel(command), ct);
+                return Results.Accepted("/exercise-options", result);
+            };
+}
 
 public class PutExerciseOptionCommand
 {

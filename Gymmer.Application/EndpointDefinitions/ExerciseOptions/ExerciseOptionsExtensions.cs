@@ -1,4 +1,5 @@
-﻿using Gymmer.Infrastructure.Persistence.Models;
+﻿using Gymmer.Application.EndpointDefinitions.ExerciseOptions.ApiQueries;
+using Gymmer.Infrastructure.Persistence.Models;
 
 namespace Gymmer.Application.EndpointDefinitions.ExerciseOptions;
 

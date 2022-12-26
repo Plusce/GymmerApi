@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Gymmer.Application.EndpointDefinitions.ExerciseOptions;
+using Gymmer.Application.EndpointDefinitions.ExerciseOptions.ApiQueries;
 using Gymmer.Infrastructure.Persistence.Models;
 using Gymmer.Infrastructure.Persistence.Repository;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -25,7 +25,7 @@ public class ExerciseOptionsEndpointDefinition_Tests
 
         // Act
         var result =
-            await ExerciseOptionsApiQueries.Get(_exerciseOptionsRepository, CancellationToken.None);
+            await GetExerciseOption.Query(_exerciseOptionsRepository, CancellationToken.None);
 
         // Assert
         result.As<Ok<List<string?>?>>().Value.Should()
@@ -43,7 +43,7 @@ public class ExerciseOptionsEndpointDefinition_Tests
 
         // Act
         var result =
-            await ExerciseOptionsApiQueries.Post(new PostExerciseOptionCommand(),
+            await PostExerciseOption.Query(new PostExerciseOptionCommand(),
                 _exerciseOptionsRepository,
                 CancellationToken.None);
 
@@ -57,14 +57,17 @@ public class ExerciseOptionsEndpointDefinition_Tests
         // Arrange
         _exerciseOptionsRepository
             .FindByIdAsync(Arg.Any<long>(), CancellationToken.None)
-            .Returns(new ExerciseOptionModel());
+            .Returns(new ExerciseOptionModel
+            {
+                Name = "Pompka"
+            });
         _exerciseOptionsRepository
             .UpdateAsync(Substitute.For<ExerciseOptionModel>(), CancellationToken.None)
             .ReturnsNull();
 
         // Act
         var result =
-            await ExerciseOptionsApiQueries.Put(new PutExerciseOptionCommand(),
+            await PutExerciseOption.Query(new PutExerciseOptionCommand(),
                 _exerciseOptionsRepository,
                 CancellationToken.None);
 
@@ -82,7 +85,7 @@ public class ExerciseOptionsEndpointDefinition_Tests
 
         // Act
         var result =
-            await ExerciseOptionsApiQueries.Delete(Arg.Any<long>(),
+            await DeleteExerciseOption.Query(Arg.Any<long>(),
                 _exerciseOptionsRepository,
                 CancellationToken.None);
 

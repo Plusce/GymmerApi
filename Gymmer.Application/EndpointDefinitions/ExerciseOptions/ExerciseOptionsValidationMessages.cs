@@ -6,5 +6,5 @@ public sealed record ExerciseOptionValidationMessages(string Message) : Validati
 {
     public static readonly ExerciseOptionValidationMessages Duplicated =
         new(
-            "Cannot name an exercise option with '{0}' name. ExerciseOption option with this specific name has been already added.");
+            "Cannot name an exercise option with '{0}' name. Exercise option with this specific name has been already added.");
 }

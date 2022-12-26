@@ -4,6 +4,14 @@ using Gymmer.Infrastructure.Persistence.Models;
 
 namespace Gymmer.Infrastructure.Persistence.Repository;
 
+public interface IExerciseOptionsRepository : IGenericRepository<ExerciseOptionModel>
+{
+    ExerciseOptionModel? FindByName(string? name);
+    Task<ExerciseOptionModel> AddAsync(ExerciseOptionModel optionModel, CancellationToken ct);
+    Task<ExerciseOptionModel> UpdateAsync(ExerciseOptionModel optionModel, CancellationToken ct);
+    Task RemoveAsync(long id, CancellationToken ct);
+}
+
 public class ExerciseOptionsRepository : IExerciseOptionsRepository
 {
     private readonly BasicDbContext _dbContext;
@@ -61,12 +69,4 @@ public class ExerciseOptionsRepository : IExerciseOptionsRepository
         _dbContext.Remove(exerciseOption);
         await _dbContext.SaveChangesAsync(ct);
     }
-}
-
-public interface IExerciseOptionsRepository : IGenericRepository<ExerciseOptionModel>
-{
-    ExerciseOptionModel? FindByName(string? name);
-    Task<ExerciseOptionModel> AddAsync(ExerciseOptionModel optionModel, CancellationToken ct);
-    Task<ExerciseOptionModel> UpdateAsync(ExerciseOptionModel optionModel, CancellationToken ct);
-    Task RemoveAsync(long id, CancellationToken ct);
 }

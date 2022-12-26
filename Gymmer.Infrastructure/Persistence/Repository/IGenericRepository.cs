@@ -1,6 +1,6 @@
 ﻿using Gymmer.Core.Models;
 
-namespace Gymmer.Core.Interfaces;
+namespace Gymmer.Infrastructure.Persistence.Repository;
 
 public interface IGenericRepository<T> where T : Entity
 {

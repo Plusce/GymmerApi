@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Gymmer.Application.EndpointDefinitions.ExerciseOptions;
+using Gymmer.Application.EndpointDefinitions.ExerciseOptions.ApiQueries;
 using Gymmer.Core.Extensions;
 using Gymmer.Infrastructure.Persistence.Repository;
 using NSubstitute;
