@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using Gymmer.Application.EndpointDefinitions.ExerciseOptions.ApiQueries;
 using Gymmer.Application.EndpointDefinitions.TrainingDefinition.ApiQueries;
 using Gymmer.Infrastructure.Persistence.Models;
 using Gymmer.Infrastructure.Persistence.Repository;

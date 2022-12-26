@@ -1,6 +1,4 @@
 ﻿using FluentAssertions;
-using Gymmer.Application.EndpointDefinitions.ExerciseOptions;
-using Gymmer.Application.EndpointDefinitions.ExerciseOptions.ApiQueries;
 using Gymmer.Application.EndpointDefinitions.TrainingDefinition;
 using Gymmer.Application.EndpointDefinitions.TrainingDefinition.ApiQueries;
 using Gymmer.Core.Extensions;

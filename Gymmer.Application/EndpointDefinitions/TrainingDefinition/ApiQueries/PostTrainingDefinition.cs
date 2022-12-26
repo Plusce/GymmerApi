@@ -9,7 +9,7 @@ internal static class PostTrainingDefinition
             async (command, repository, ct) =>
             {
                 var result = await repository.AddAsync(command.ToAddModel(), ct);
-                return Results.Created("/training-definitions", result);
+                return Results.Created(TrainingDefinitionsEndpointDefinition.BasePath, result);
             };
 }
 

@@ -9,7 +9,7 @@ public static class PostExerciseOption
             async (command, repository, ct) =>
             {
                 var result = await repository.AddAsync(command.ToAddModel(), ct);
-                return Results.Created("/exercise-options", result);
+                return Results.Created(ExerciseOptionsEndpointDefinition.BasePath, result);
             };
 }
 
