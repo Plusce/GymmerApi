@@ -7,7 +7,7 @@ namespace Gymmer.Application.EndpointDefinitions.ExerciseOptions;
 
 public class ExerciseOptionsEndpointDefinition : IEndpointDefinition
 {
-    public static string BasePath { get; } = "/exercise-options";
+    public const string BasePath = "/exercise-options";
 
     public void DefineServices(IServiceCollection services)
     {

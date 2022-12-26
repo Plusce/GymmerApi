@@ -9,7 +9,7 @@ namespace Gymmer.Application.EndpointDefinitions.TrainingDefinition;
 
 public class TrainingDefinitionsEndpointDefinition : IEndpointDefinition
 {
-    public static string BasePath { get; } = "/training-definitions";
+    public const string BasePath = "/training-definitions";
 
     public void DefineServices(IServiceCollection services)
     {

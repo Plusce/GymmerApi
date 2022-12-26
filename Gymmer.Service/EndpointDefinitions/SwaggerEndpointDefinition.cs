@@ -5,8 +5,6 @@ namespace Gymmer.Service.EndpointDefinitions;
 
 public class SwaggerEndpointDefinition : IEndpointDefinition
 {
-    public static string BasePath { get; } = string.Empty;
-
     public void DefineServices(IServiceCollection services)
     {
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
