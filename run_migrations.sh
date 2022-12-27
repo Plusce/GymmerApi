@@ -1,1 +1,1 @@
-dotnet ef --project Gymmer.Infrastructure/Gymmer.Infrastructure.csproj --startup-project Gymmer.Service/Gymmer.Service.csproj migrations add InitialCreate --context SqliteDbContext --output-dir ./Persistence/SqliteMigrations --verbose
+dotnet ef --project Gymmer.Infrastructure --startup-project Gymmer.Service migrations add InitialCreate --context SqliteDbContext --output-dir ./Persistence/SqliteMigrations --verbose

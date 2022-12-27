@@ -16,6 +16,8 @@ internal static class PostTrainingDefinition
 public record PostTrainingDefinitionCommand
 {
     public required string Name { get; set; }
+    public string? Description { get; set; }
+    public List<long>? Exercises { get; set; }
 }
 
 public class PostTrainingDefinitionValidator : AbstractValidator<PostTrainingDefinitionCommand>

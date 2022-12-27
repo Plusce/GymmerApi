@@ -1,4 +1,6 @@
 ﻿using Gymmer.Core.Models;
+using Gymmer.Infrastructure.Persistence.Models;
+using Gymmer.Infrastructure.Persistence.Models.Base;
 
 namespace Gymmer.Infrastructure.Persistence.Repository;
 

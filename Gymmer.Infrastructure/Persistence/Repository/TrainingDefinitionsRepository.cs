@@ -32,7 +32,9 @@ public class TrainingDefinitionsRepository : ITrainingDefinitionsRepository
 
     public IQueryable<TrainingDefinitionModel> ReadOnlyQuery()
     {
-        return _dbContext.TrainingDefinition;
+        return _dbContext.TrainingDefinition
+            .Include(td => td.Exercises)!
+            .ThenInclude(te => te.ExerciseOption);
     }
 
     public TrainingDefinitionModel? FindByName(string? name)
