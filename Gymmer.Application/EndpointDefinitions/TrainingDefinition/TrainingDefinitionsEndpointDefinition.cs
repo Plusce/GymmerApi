@@ -1,15 +1,13 @@
-﻿using Gymmer.Application.EndpointDefinitions.ExerciseOptions;
-using Gymmer.Application.EndpointDefinitions.ExerciseOptions.ApiQueries;
-using Gymmer.Application.EndpointDefinitions.TrainingDefinition.ApiQueries;
+﻿using Gymmer.Application.EndpointDefinitions.TrainingDefinition.ApiQueries;
 using Gymmer.Core.Filters;
 using Gymmer.Core.Interfaces;
 using Gymmer.Infrastructure.Persistence.Models;
 
 namespace Gymmer.Application.EndpointDefinitions.TrainingDefinition;
 
-public class TrainingDefinitionsEndpointDefinition : IEndpointDefinition
+public class TrainingDefinitionsEndpointDefinition : IEndpointDefinition, IEndpointDefinitionBasePath
 {
-    public const string BasePath = "/training-definitions";
+    public static string BasePath { get; } = "/training-definitions";
 
     public void DefineServices(IServiceCollection services)
     {
