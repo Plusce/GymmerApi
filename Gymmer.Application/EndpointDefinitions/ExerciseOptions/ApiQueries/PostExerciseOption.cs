@@ -31,7 +31,8 @@ public class PostExerciseOptionValidator : AbstractValidator<PostExerciseOptionC
             .Must(name => repository.FindByName(name) == null)
             .WithMessage(cmd => ExerciseOptionValidationMessages
                 .Duplicated
-                .AddParams(cmd.Name));
+                .AddParams(cmd.Name)
+                .Message);
 
         RuleFor(cmd => cmd.Description)
             .MaximumLength(500);

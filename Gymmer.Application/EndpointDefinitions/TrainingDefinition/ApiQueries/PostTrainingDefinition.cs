@@ -17,12 +17,13 @@ public record PostTrainingDefinitionCommand
 {
     public required string Name { get; set; }
     public string? Description { get; set; }
-    public List<long>? Exercises { get; set; }
+    public List<long>? ExerciseIds { get; set; }
 }
 
 public class PostTrainingDefinitionValidator : AbstractValidator<PostTrainingDefinitionCommand>
 {
-    public PostTrainingDefinitionValidator(ITrainingDefinitionsRepository repository)
+    public PostTrainingDefinitionValidator(ITrainingDefinitionsRepository repository,
+        ITrainingDefinitionsValidationService validation)
     {
         RuleFor(cmd => cmd.Name)
             .Cascade(CascadeMode.Stop)
@@ -31,6 +32,15 @@ public class PostTrainingDefinitionValidator : AbstractValidator<PostTrainingDef
             .Must(name => repository.FindByName(name) == null)
             .WithMessage(cmd => TrainingDefinitionsValidationMessages
                 .Duplicated
-                .AddParams(cmd.Name));
+                .AddParams(cmd.Name)
+                .Message);
+        
+        RuleFor(cmd => cmd.Description)
+            .MaximumLength(500);
+
+        RuleFor(cmd => cmd.ExerciseIds)
+            .Must(ids => validation.AllExerciseOptionIdsAreCorrect(ids!))
+            .WithMessage(cmd => TrainingDefinitionsValidationMessages.IncorrectExerciseOptionIds.Message)
+            .When(cmd => cmd.ExerciseIds is { Count: > 0 });
     }
 }

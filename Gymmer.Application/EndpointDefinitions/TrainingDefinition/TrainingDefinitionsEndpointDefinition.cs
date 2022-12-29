@@ -12,6 +12,7 @@ public class TrainingDefinitionsEndpointDefinition : IEndpointDefinition, IEndpo
     public void DefineServices(IServiceCollection services)
     {
         services.AddScoped<ITrainingDefinitionsRepository, TrainingDefinitionsRepository>();
+        services.AddTransient<ITrainingDefinitionsValidationService, TrainingDefinitionsValidationService>();
     }
 
     public void DefineEndpoints(WebApplication app)

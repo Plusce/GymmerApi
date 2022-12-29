@@ -29,6 +29,6 @@ public class PostExerciseOptionValidator_Tests
         // Assert
         var failureResponse = result.Errors.ToResponse();
         var error = failureResponse.Errors.Should().ContainSingle().Which;
-        error.Should().Be(ExerciseOptionValidationMessages.Duplicated.AddParams("Pompka"));
+        error.Should().Be(ExerciseOptionValidationMessages.Duplicated.AddParams("Pompka").Message);
     }
 }

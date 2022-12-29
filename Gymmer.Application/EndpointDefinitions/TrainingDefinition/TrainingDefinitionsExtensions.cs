@@ -12,7 +12,7 @@ public static class TrainingDefinitionsExtensions
             Description = command.Description,
             CreationDate = DateTime.UtcNow,
             EditionDate = DateTime.UtcNow,
-            Exercises = command.Exercises?.Select((id, i) => new TrainingDefinitionExerciseOptionModel
+            Exercises = command.ExerciseIds?.Select((id, i) => new TrainingDefinitionExerciseOptionModel
             {
                 TrainingDefinitionId = 0,
                 ExerciseOptionId = id,
