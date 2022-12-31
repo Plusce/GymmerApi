@@ -1,12 +1,9 @@
-﻿using Gymmer.Core.Models;
-using Gymmer.Infrastructure.Persistence.Models;
-using Gymmer.Infrastructure.Persistence.Models.Base;
+﻿namespace Gymmer.Infrastructure.Persistence.Repository;
 
-namespace Gymmer.Infrastructure.Persistence.Repository;
-
-public interface IGenericRepository<T> where T : Entity
+public interface IGenericRepository<T, I> 
+    where T : class 
 {
-    public Task<T?> FindByIdAsync(long id, CancellationToken ct = default);
+    public Task<T?> FindByIdAsync(I id, CancellationToken ct = default);
     public Task<List<T?>> FindAllAsync(CancellationToken ct = default);
     public IQueryable<T> ReadOnlyQuery();
 }

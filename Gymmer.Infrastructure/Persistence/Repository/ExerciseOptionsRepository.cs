@@ -4,7 +4,7 @@ using Gymmer.Infrastructure.Persistence.Models;
 
 namespace Gymmer.Infrastructure.Persistence.Repository;
 
-public interface IExerciseOptionsRepository : IGenericRepository<ExerciseOptionModel>
+public interface IExerciseOptionsRepository : IGenericRepository<ExerciseOptionModel, long>
 {
     ExerciseOptionModel? FindByName(string? name);
     Task<ExerciseOptionModel> AddAsync(ExerciseOptionModel optionModel, CancellationToken ct);

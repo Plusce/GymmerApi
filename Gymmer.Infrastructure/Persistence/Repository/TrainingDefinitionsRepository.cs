@@ -1,10 +1,9 @@
-﻿using Gymmer.Core.Interfaces;
-using Gymmer.Infrastructure.Persistence.DbContext;
+﻿using Gymmer.Infrastructure.Persistence.DbContext;
 using Gymmer.Infrastructure.Persistence.Models;
 
 namespace Gymmer.Infrastructure.Persistence.Repository;
 
-public interface ITrainingDefinitionsRepository : IGenericRepository<TrainingDefinitionModel>
+public interface ITrainingDefinitionsRepository : IGenericRepository<TrainingDefinitionModel, long>
 {
     TrainingDefinitionModel? FindByName(string? name);
     Task<TrainingDefinitionModel> AddAsync(TrainingDefinitionModel optionModel, CancellationToken ct);

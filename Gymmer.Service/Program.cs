@@ -3,6 +3,7 @@ using Gymmer.Application.EndpointDefinitions.ExerciseOptions;
 using Gymmer.Application.EndpointDefinitions.ExerciseOptions.ApiQueries;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Gymmer.Core.Extensions;
+using Gymmer.Infrastructure.Persistence.Extensions;
 using Gymmer.Service.EndpointDefinitions;
 using Gymmer.Service.Extensions;
 
@@ -28,6 +29,8 @@ builder.Services.AddValidatorsFromAssemblyContaining<PostExerciseOptionValidator
 
 builder.Services.AddEndpointDefinitions(typeof(SwaggerEndpointDefinition), 
     typeof(ExerciseOptionsEndpointDefinition));
+
+builder.AddCosmosDb();
 
 var app = builder.Build();
 

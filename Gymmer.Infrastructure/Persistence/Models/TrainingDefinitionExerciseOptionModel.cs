@@ -11,5 +11,5 @@ public class TrainingDefinitionExerciseOptionModel
     public required long ExerciseOptionId { get; set; }
     public ExerciseOptionModel? ExerciseOption { get; set; }
     
-    public required ushort Order { get; set; }
+    public required int Order { get; set; }
 }
