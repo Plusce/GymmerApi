@@ -11,15 +11,12 @@ public interface ITrainingsRepository : IGenericRepository<TrainingModel, string
 
 public class TrainingsRepository : ITrainingsRepository
 {
-    public static string ContainerName = "Trainings";
-    private readonly ICosmosDbContainerFactory _cosmosDbContainerFactory;
+    public static readonly string ContainerName = "Trainings";
     private readonly Container _container;
 
     public TrainingsRepository(ICosmosDbContainerFactory cosmosDbContainerFactory)
     {
-        _cosmosDbContainerFactory = cosmosDbContainerFactory ??
-                                    throw new ArgumentNullException(nameof(ICosmosDbContainerFactory));
-        _container = _cosmosDbContainerFactory.GetContainer(ContainerName)._container;
+        _container = cosmosDbContainerFactory.GetContainer(ContainerName)._container;
     }
 
     private string GenerateId(TrainingModel entity) => $"{entity.TrainingDefinitionName}:{Guid.NewGuid()}";
