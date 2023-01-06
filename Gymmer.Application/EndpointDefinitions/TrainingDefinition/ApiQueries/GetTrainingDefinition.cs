@@ -2,8 +2,8 @@
 
 internal static class GetTrainingDefinition
 {
-    public static readonly Func<ITrainingDefinitionsRepository, CancellationToken, Task<IResult>> Query =
-        async (repository, ct) =>
+    public static readonly Func<string, ITrainingDefinitionsRepository, CancellationToken, Task<IResult>> Query =
+        async (name, repository, ct) =>
         {
             var trainingDefinitions = (await repository.FindAllAsync(ct))
                 .Select(party => party?.Name)

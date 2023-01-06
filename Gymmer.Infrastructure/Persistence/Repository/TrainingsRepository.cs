@@ -22,9 +22,14 @@ public class TrainingsRepository : ITrainingsRepository
     private string GenerateId(TrainingModel entity) => $"{entity.TrainingDefinitionName}:{Guid.NewGuid()}";
     private PartitionKey ResolvePartitionKey(string entityId) => new(entityId.Split(':')[0]);
 
-    public Task<TrainingModel?> FindByIdAsync(string id, CancellationToken ct = default)
+    public async Task<TrainingModel?> FindByIdAsync(string id, CancellationToken ct = default)
     {
-        throw new NotImplementedException();
+        var sqlQueryText = $"SELECT * FROM c WHERE c.id = \"{id}\"";
+        var queryDefinition = new QueryDefinition(sqlQueryText);
+        var queryResultSetIterator = _container.GetItemQueryIterator<TrainingModel>(queryDefinition);
+        
+        var result = await queryResultSetIterator.ReadNextAsync(ct);
+        return result.Resource.FirstOrDefault();
     }
 
     public Task<List<TrainingModel?>> FindAllAsync(CancellationToken ct = default)

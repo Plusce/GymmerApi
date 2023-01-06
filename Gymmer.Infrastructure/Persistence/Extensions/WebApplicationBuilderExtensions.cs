@@ -15,6 +15,9 @@ public static class WebApplicationBuilderExtensions
             .Get<CosmosDbSettings>()!;
         
         var client = new CosmosClient(cosmosDbConfig.EndpointUrl, cosmosDbConfig.PrimaryKey);
+        
+        client.CreateDatabaseIfNotExistsAsync(cosmosDbConfig.DatabaseName);
+        
         var cosmosDbClientFactory = new CosmosDbContainerFactory(client, 
             cosmosDbConfig.DatabaseName, 
             cosmosDbConfig.Containers);
