@@ -7,6 +7,7 @@ namespace Gymmer.Infrastructure.Persistence.Repository;
 public interface ITrainingsRepository : IGenericRepository<TrainingModel, string>
 {
     Task<TrainingModel> AddAsync(TrainingModel model, CancellationToken ct);
+    Task<TrainingModel?> FindByNameAsync(string name, CancellationToken ct);
 }
 
 public class TrainingsRepository : ITrainingsRepository
@@ -25,6 +26,17 @@ public class TrainingsRepository : ITrainingsRepository
     public async Task<TrainingModel?> FindByIdAsync(string id, CancellationToken ct = default)
     {
         var sqlQueryText = $"SELECT * FROM c WHERE c.id = \"{id}\"";
+        return await FindByQueryAsync(sqlQueryText, ct);
+    }
+    
+    public async Task<TrainingModel?> FindByNameAsync(string name, CancellationToken ct = default)
+    {
+        var sqlQueryText = $"SELECT * FROM c WHERE c.name = \"{name}\"";
+        return await FindByQueryAsync(sqlQueryText, ct);
+    }
+
+    private async Task<TrainingModel?> FindByQueryAsync(string sqlQueryText, CancellationToken ct = default)
+    {
         var queryDefinition = new QueryDefinition(sqlQueryText);
         var queryResultSetIterator = _container.GetItemQueryIterator<TrainingModel>(queryDefinition);
         
