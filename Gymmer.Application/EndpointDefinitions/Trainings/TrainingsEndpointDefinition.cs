@@ -17,5 +17,7 @@ public class TrainingsEndpointDefinition : IEndpointDefinition, IEndpointDefinit
     {
         app.MapGet(BasePath, GetTraining.Query)
             .Produces<TrainingModel?>();
+        app.MapPost(BasePath, PostTraining.Query)
+            .Produces<TrainingModel>();
     }
 }
