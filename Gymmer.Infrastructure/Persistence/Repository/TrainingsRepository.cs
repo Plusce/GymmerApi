@@ -44,9 +44,14 @@ public class TrainingsRepository : ITrainingsRepository
         return result.Resource.FirstOrDefault();
     }
 
-    public Task<List<TrainingModel?>> FindAllAsync(CancellationToken ct = default)
+    public async Task<List<TrainingModel?>> FindAllAsync(CancellationToken ct = default)
     {
-        throw new NotImplementedException();
+        var sqlQueryText = $"SELECT * FROM c";
+        var queryDefinition = new QueryDefinition(sqlQueryText);
+        var queryResultSetIterator = _container.GetItemQueryIterator<TrainingModel>(queryDefinition);
+        
+        var result = await queryResultSetIterator.ReadNextAsync(ct);
+        return result.Resource.ToList()!;
     }
     
     public async Task<TrainingModel> AddAsync(TrainingModel model, CancellationToken ct)

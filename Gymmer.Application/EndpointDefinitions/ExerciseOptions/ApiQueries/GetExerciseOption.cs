@@ -1,8 +1,8 @@
 ﻿namespace Gymmer.Application.EndpointDefinitions.ExerciseOptions.ApiQueries;
 
-public static class GetExerciseOption
+internal static class GetExerciseOption
 {
-    internal static readonly Func<IExerciseOptionsRepository, CancellationToken, Task<IResult>> Query =
+    public static readonly Func<IExerciseOptionsRepository, CancellationToken, Task<IResult>> Query =
         async (repository, ct) =>
         {
             var exerciseOptions = (await repository.FindAllAsync(ct))

@@ -1,8 +1,8 @@
 ﻿namespace Gymmer.Application.EndpointDefinitions.ExerciseOptions.ApiQueries;
 
-public static class DeleteExerciseOption
+internal static class DeleteExerciseOption
 {
-    internal static readonly Func<long, IExerciseOptionsRepository, CancellationToken, Task<IResult>> Query =
+    public static readonly Func<long, IExerciseOptionsRepository, CancellationToken, Task<IResult>> Query =
         async (id, repository, ct) =>
         {
             await repository.RemoveAsync(id, ct);

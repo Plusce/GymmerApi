@@ -2,9 +2,9 @@
 
 namespace Gymmer.Application.EndpointDefinitions.ExerciseOptions.ApiQueries;
 
-public static class PostExerciseOption
+internal static class PostExerciseOption
 {
-    internal static readonly Func<PostExerciseOptionCommand, IExerciseOptionsRepository, CancellationToken, Task<IResult>>
+    public static readonly Func<PostExerciseOptionCommand, IExerciseOptionsRepository, CancellationToken, Task<IResult>>
         Query =
             async (command, repository, ct) =>
             {
