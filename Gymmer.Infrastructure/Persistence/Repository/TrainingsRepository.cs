@@ -31,7 +31,7 @@ public class TrainingsRepository : ITrainingsRepository
     
     public async Task<TrainingModel?> FindByNameAsync(string name, CancellationToken ct = default)
     {
-        var sqlQueryText = $"SELECT * FROM c WHERE c.TrainingDefinitionName = \"{name}\"";
+        var sqlQueryText = $"SELECT * FROM c WHERE c.TrainingName = \"{name}\"";
         return await FindByQueryAsync(sqlQueryText, ct);
     }
 
