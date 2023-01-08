@@ -5,5 +5,4 @@ public interface IGenericRepository<T, I>
 {
     public Task<T?> FindByIdAsync(I id, CancellationToken ct = default);
     public Task<List<T?>> FindAllAsync(CancellationToken ct = default);
-    public IQueryable<T> ReadOnlyQuery();
 }

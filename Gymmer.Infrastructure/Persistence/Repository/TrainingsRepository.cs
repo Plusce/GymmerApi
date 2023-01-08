@@ -48,12 +48,7 @@ public class TrainingsRepository : ITrainingsRepository
     {
         throw new NotImplementedException();
     }
-
-    public IQueryable<TrainingModel> ReadOnlyQuery()
-    {
-        throw new NotImplementedException();
-    }
-
+    
     public async Task<TrainingModel> AddAsync(TrainingModel model, CancellationToken ct)
     {
         model.Id = GenerateId(model);

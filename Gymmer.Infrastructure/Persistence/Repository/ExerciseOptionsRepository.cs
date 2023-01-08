@@ -6,6 +6,7 @@ namespace Gymmer.Infrastructure.Persistence.Repository;
 
 public interface IExerciseOptionsRepository : IGenericRepository<ExerciseOptionModel, long>
 {
+    IQueryable<ExerciseOptionModel> ReadOnlyQuery();
     ExerciseOptionModel? FindByName(string? name);
     Task<ExerciseOptionModel> AddAsync(ExerciseOptionModel optionModel, CancellationToken ct);
     Task<ExerciseOptionModel> UpdateAsync(ExerciseOptionModel optionModel, CancellationToken ct);

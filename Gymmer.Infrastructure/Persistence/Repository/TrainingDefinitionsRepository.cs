@@ -5,6 +5,7 @@ namespace Gymmer.Infrastructure.Persistence.Repository;
 
 public interface ITrainingDefinitionsRepository : IGenericRepository<TrainingDefinitionModel, long>
 {
+    public IQueryable<TrainingDefinitionModel> ReadOnlyQuery();
     TrainingDefinitionModel? FindByName(string? name);
     Task<TrainingDefinitionModel> AddAsync(TrainingDefinitionModel optionModel, CancellationToken ct);
     Task RemoveAsync(long id, CancellationToken ct);
