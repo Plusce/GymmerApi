@@ -1,4 +1,5 @@
 ﻿using Gymmer.Application.EndpointDefinitions.Trainings.ApiQueries;
+using Gymmer.Core.Filters;
 using Gymmer.Core.Interfaces;
 using Gymmer.Infrastructure.Persistence.Models;
 
@@ -11,6 +12,7 @@ public class TrainingsEndpointDefinition : IEndpointDefinition, IEndpointDefinit
     public void DefineServices(IServiceCollection services)
     {
         services.AddScoped<ITrainingsRepository, TrainingsRepository>();
+        services.AddTransient<IPostTrainingValidationService, PostTrainingValidationService>();
     }
 
     public void DefineEndpoints(WebApplication app)
@@ -18,6 +20,7 @@ public class TrainingsEndpointDefinition : IEndpointDefinition, IEndpointDefinit
         app.MapGet(BasePath, GetTraining.Query)
             .Produces<TrainingModel?>();
         app.MapPost(BasePath, PostTraining.Query)
-            .Produces<TrainingModel>();
+            .Produces<TrainingModel>()
+            .AddEndpointFilter<ValidationFilter<PostTrainingCommand>>();
     }
 }
