@@ -17,7 +17,7 @@ public class TrainingDefinitionsEndpointDefinition : IEndpointDefinition, IEndpo
 
     public void DefineEndpoints(WebApplication app)
     {
-        app.MapGet(BasePath, GetTrainingDefinition.Query)
+        app.MapGet(BasePath, GetTrainingDefinitions.Query)
             .Produces<IEnumerable<string?>>();
         app.MapPost(BasePath, PostTrainingDefinition.Query)
             .Produces<TrainingDefinitionModel>()

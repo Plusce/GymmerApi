@@ -1,7 +1,4 @@
-﻿using Gymmer.Core.Interfaces;
-using Gymmer.Infrastructure.Persistence.Models.Base;
-
-namespace Gymmer.Infrastructure.Persistence.Models;
+﻿namespace Gymmer.Infrastructure.Persistence.Models;
 
 public class TrainingDefinitionExerciseOptionModel
 {

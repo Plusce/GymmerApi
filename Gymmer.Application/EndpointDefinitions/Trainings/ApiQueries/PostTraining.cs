@@ -53,16 +53,16 @@ public interface IPostTrainingValidationService
 
 public class PostTrainingValidationService : IPostTrainingValidationService
 {
-    private readonly BasicDbContext _dbContext;
+    private readonly ITrainingDefinitionsRepository _trainingDefinitionRepository;
 
-    public PostTrainingValidationService(BasicDbContext dbContext)
+    public PostTrainingValidationService(ITrainingDefinitionsRepository trainingDefinitionRepository)
     {
-        _dbContext = dbContext;
+        _trainingDefinitionRepository = trainingDefinitionRepository;
     }
 
     public bool AllExerciseNamesAreCorrect(IEnumerable<string> exerciseNames)
     {
         return exerciseNames.All(name =>
-            _dbContext.ExerciseOption.Any(option => option.Name == name)); // TODO: To improve this method
+            _trainingDefinitionRepository.FindByName(name) != null); // TODO: To optimize this method
     }
 }

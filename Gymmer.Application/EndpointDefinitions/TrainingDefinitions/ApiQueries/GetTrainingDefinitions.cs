@@ -1,9 +1,9 @@
 ﻿namespace Gymmer.Application.EndpointDefinitions.TrainingDefinitions.ApiQueries;
 
-internal static class GetTrainingDefinition
+internal static class GetTrainingDefinitions
 {
-    public static readonly Func<string, ITrainingDefinitionsRepository, CancellationToken, Task<IResult>> Query =
-        async (name, repository, ct) =>
+    public static readonly Func<ITrainingDefinitionsRepository, CancellationToken, Task<IResult>> Query =
+        async (repository, ct) =>
         {
             var trainingDefinitions = (await repository.FindAllAsync(ct))
                 .Select(party => party?.Name)
