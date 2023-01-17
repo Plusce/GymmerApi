@@ -1,7 +1,5 @@
 ﻿using Gymmer.Core.Extensions;
-using Gymmer.Infrastructure.Persistence.DbContext;
 using Gymmer.Infrastructure.Persistence.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace Gymmer.Application.EndpointDefinitions.Trainings.ApiQueries;
 
@@ -24,15 +22,14 @@ public record PostTrainingCommand
 
 public class PostTrainingValidator : AbstractValidator<PostTrainingCommand>
 {
-    public PostTrainingValidator(ITrainingDefinitionsRepository trainingDefinitionRepository,
-        IPostTrainingValidationService validation)
+    public PostTrainingValidator(IPostTrainingValidationService validation)
     {
         RuleFor(cmd => cmd.TrainingDefinitionName)
             .Cascade(CascadeMode.Stop)
             .MinimumLength(1)
             .MaximumLength(200)
-            .Must(name => trainingDefinitionRepository.FindByName(name) != null)
-            .WithMessage(cmd => TrainingValidationMessages.IncorrectExerciseOptionNames
+            .Must(validation.TrainingDefinitionExists)
+            .WithMessage(cmd => TrainingValidationMessages.TrainingDefinitionNameNotExists
                 .AddParams(cmd.TrainingDefinitionName)
                 .Message);
 
@@ -48,6 +45,7 @@ public class PostTrainingValidator : AbstractValidator<PostTrainingCommand>
 
 public interface IPostTrainingValidationService
 {
+    public bool TrainingDefinitionExists(string name);
     public bool AllExerciseNamesAreCorrect(IEnumerable<string> exerciseNames);
 }
 
@@ -58,6 +56,11 @@ public class PostTrainingValidationService : IPostTrainingValidationService
     public PostTrainingValidationService(ITrainingDefinitionsRepository trainingDefinitionRepository)
     {
         _trainingDefinitionRepository = trainingDefinitionRepository;
+    }
+
+    public bool TrainingDefinitionExists(string name)
+    {
+        return _trainingDefinitionRepository.FindByName(name) != null;
     }
 
     public bool AllExerciseNamesAreCorrect(IEnumerable<string> exerciseNames)

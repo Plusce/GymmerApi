@@ -162,7 +162,13 @@ public class TrainingDefinitionsRepositoryFake : ITrainingDefinitionsRepository
 
     public TrainingDefinitionModel? FindByName(string? name)
     {
-        return name != null ? _definitions[name] : null;
+        if (string.IsNullOrEmpty(name))
+        {
+            return null;
+        }
+
+        _definitions.TryGetValue(name, out var model);
+        return model;
     }
 
     public Task<TrainingDefinitionModel> AddAsync(TrainingDefinitionModel definitionModel, CancellationToken ct)
