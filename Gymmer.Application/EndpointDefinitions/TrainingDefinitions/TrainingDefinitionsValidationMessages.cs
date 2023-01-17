@@ -1,6 +1,6 @@
 ﻿using Gymmer.Core.Models;
 
-namespace Gymmer.Application.EndpointDefinitions.TrainingDefinition;
+namespace Gymmer.Application.EndpointDefinitions.TrainingDefinitions;
 
 public sealed record TrainingDefinitionsValidationMessages(string Message) : ValidationMessage(Message)
 {

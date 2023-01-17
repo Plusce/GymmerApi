@@ -1,6 +1,6 @@
 ﻿using Gymmer.Core.Extensions;
 
-namespace Gymmer.Application.EndpointDefinitions.TrainingDefinition.ApiQueries;
+namespace Gymmer.Application.EndpointDefinitions.TrainingDefinitions.ApiQueries;
 
 internal static class PostTrainingDefinition
 {

@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Gymmer.Application.EndpointDefinitions.TrainingDefinition.ApiQueries;
+using Gymmer.Application.EndpointDefinitions.TrainingDefinitions.ApiQueries;
 using Gymmer.Infrastructure.Persistence.Models;
 using Gymmer.Infrastructure.Persistence.Repository;
 using Microsoft.AspNetCore.Http.HttpResults;

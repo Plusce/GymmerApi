@@ -1,6 +1,6 @@
 using System.Text;
 using Gymmer.Application.EndpointDefinitions.ExerciseOptions.ApiQueries;
-using Gymmer.Application.EndpointDefinitions.TrainingDefinition;
+using Gymmer.Application.EndpointDefinitions.TrainingDefinitions;
 using Gymmer.Infrastructure.Persistence.DbContext;
 using Gymmer.Infrastructure.Persistence.Repository;
 using Gymmer.Service;

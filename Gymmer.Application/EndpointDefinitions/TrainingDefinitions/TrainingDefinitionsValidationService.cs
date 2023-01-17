@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Gymmer.Application.EndpointDefinitions.TrainingDefinition;
+namespace Gymmer.Application.EndpointDefinitions.TrainingDefinitions;
 
 public interface ITrainingDefinitionsValidationService
 {
