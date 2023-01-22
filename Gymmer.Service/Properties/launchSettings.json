@@ -1,19 +1,5 @@
 ﻿{
   "$schema": "https://json.schemastore.org/launchsettings.json",
-  "Kestrel": {
-    "Endpoints": {
-      "Http": {
-        "Url":  "http://0.0.0.0:5192"
-      },
-      "Https": {
-        "Url": "https://0.0.0.0:7192"
-      }
-    },
-    "EndpointDefaults": {
-      "Url": "https://0.0.0.0:7192",
-      "Protocols": "Http1"
-    }
-  },
   "profiles": {
     "Gymmer.Service": {
       "commandName": "Project",

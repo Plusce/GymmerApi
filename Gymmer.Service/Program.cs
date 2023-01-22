@@ -6,8 +6,6 @@ using Gymmer.Core.Extensions;
 using Gymmer.Infrastructure.Persistence.Extensions;
 using Gymmer.Service.EndpointDefinitions;
 using Gymmer.Service.Extensions;
-using Microsoft.AspNetCore.Hosting.Server;
-using Microsoft.AspNetCore.Hosting.Server.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,21 +44,7 @@ app.UseEndpointDefinitions();
 app.SetupDatabase();
 app.SeedDatabase();
 
-IServerAddressesFeature? addressFeature = null;
-// ReSharper disable once AccessToModifiedClosure
-app.MapGet("/", () => $"Hi there, Kestrel is running on\n\n{string.Join("\n", addressFeature!.Addresses.ToArray() )} ");
-
-app.Start();
-
-var server = app.Services.GetService<IServer>();
-addressFeature = server!.Features.Get<IServerAddressesFeature>();
-
-foreach (var address in addressFeature!.Addresses)
-{
-    Console.WriteLine("Kestrel is listening on address: " + address);
-}
-
-app.WaitForShutdown();
+app.Run();
 
 public partial class Program
 {
