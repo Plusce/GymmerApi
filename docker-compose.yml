@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  gymmer-api:
+    image: gymmer-api:latest
+    container_name: gymmer-api
+    tty: true
+#    entrypoint: /bin/bash
+    ports:
+      - "5192:5192"
+      - "7192:7192"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Local
+      - ASPNETCORE_URLS=https://+:7192;http://+:5192
+      # please, review the provided path, according to your
+      # setup I am unsure whether it is exact or not
+#      - ASPNETCORE_Kestrel__Certificates__Default__Path=${HOME}/.aspnet/https/aspnetapp.pfx
+      # consider use an env varible to provide the password, to avoid
+      # putting under version control system sensitive information
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=TestPassword
+        
