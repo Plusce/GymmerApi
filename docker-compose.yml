@@ -6,7 +6,12 @@ services:
     image: gymmer-api:latest
     container_name: gymmer-api
     tty: true
-    entrypoint: dotnet watch run --project Gymmer.Service
+    entrypoint: 
+      - /bin/bash
+      - -c
+      - |
+        dotnet dev-certs https -ep /usr/local/share/ca-certificates/.aspnet/https/aspnetapp.pfx -p TestPassword
+        dotnet watch run --project Gymmer.Service
     volumes:
       - type: bind
         source: D:/repos/GymmerApi
@@ -19,7 +24,7 @@ services:
       - ASPNETCORE_URLS=https://+:7192;http://+:5192
       # please, review the provided path, according to your
       # setup I am unsure whether it is exact or not
-#      - ASPNETCORE_Kestrel__Certificates__Default__Path=${HOME}/.aspnet/https/aspnetapp.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/usr/local/share/ca-certificates/.aspnet/https/aspnetapp.pfx
       # consider use an env varible to provide the password, to avoid
       # putting under version control system sensitive information
       - ASPNETCORE_Kestrel__Certificates__Default__Password=TestPassword
