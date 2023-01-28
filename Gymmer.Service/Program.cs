@@ -6,6 +6,7 @@ using Gymmer.Core.Extensions;
 using Gymmer.Infrastructure.Persistence.Extensions;
 using Gymmer.Service.EndpointDefinitions;
 using Gymmer.Service.Extensions;
+using Microsoft.IdentityModel.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
