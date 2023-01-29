@@ -45,6 +45,8 @@ app.UseEndpointDefinitions();
 app.SetupDatabase();
 app.SeedDatabase();
 
+IdentityModelEventSource.ShowPII = true;
+
 app.Run();
 
 public partial class Program
