@@ -45,7 +45,10 @@ app.UseEndpointDefinitions();
 app.SetupDatabase();
 app.SeedDatabase();
 
-IdentityModelEventSource.ShowPII = true;
+if (app.Environment.IsDevelopment())
+{
+    IdentityModelEventSource.ShowPII = true;
+}
 
 app.Run();
 

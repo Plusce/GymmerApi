@@ -16,6 +16,8 @@ services:
     volumes:
        - ~/.aspnet/https:/https:ro
        - D:/repos/GymmerApi:/gymmer-api
+    dns:
+       - 1.1.1.1
     ports:
       - "5192:5192"
       - "7192:7192"
