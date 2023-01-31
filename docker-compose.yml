@@ -15,7 +15,7 @@ services:
     working_dir: /gymmer-api
     volumes:
        - ~/.aspnet/https:/https:ro
-       - D:/repos/GymmerApi:/gymmer-api
+       - ~/repos/GymmerApi:/gymmer-api
     dns:
        - 1.1.1.1
     ports:
