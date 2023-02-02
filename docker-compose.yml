@@ -1,6 +1,25 @@
 version: '3.9'
 
 services:
+  cosmos-db:
+    build: /docker/cosmos-db/.
+    container_name: cosmos-db
+    tty: true
+    ports:
+      - "8081:8081"
+      - "10250-10255:10250-10255"
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 3gb
+        reservations:
+          cpus: '1.5'
+          memory: 2gb
+    environment:
+      - AZURE_COSMOS_EMULATOR_PARTITION_COUNT=10
+      - AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE=true
+      - AZURE_COSMOS_EMULATOR_IP_ADDRESS_OVERRIDE=$ipaddr
   gymmer-api:
     build: /docker/api/.
     container_name: gymmer-api
