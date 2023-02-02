@@ -2,8 +2,7 @@ version: '3.9'
 
 services:
   gymmer-api:
-    build: .
-    image: gymmer-api:latest
+    build: /docker/api/.
     container_name: gymmer-api
     tty: true
     entrypoint:
