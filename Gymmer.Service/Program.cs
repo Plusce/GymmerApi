@@ -31,7 +31,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<PostExerciseOptionValidator
 builder.Services.AddEndpointDefinitions(typeof(SwaggerEndpointDefinition), 
     typeof(ExerciseOptionsEndpointDefinition));
 
-builder.AddCosmosDb();
+await builder.AddCosmosDb();
 
 var app = builder.Build();
 

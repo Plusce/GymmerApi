@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using Gymmer.Infrastructure.Persistence.DbContext.Cosmos;
+﻿using Gymmer.Infrastructure.Persistence.DbContext.Cosmos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Azure.Cosmos;
 
@@ -7,23 +6,37 @@ namespace Gymmer.Infrastructure.Persistence.Extensions;
 
 public static class WebApplicationBuilderExtensions
 {
-    public static WebApplicationBuilder AddCosmosDb(this WebApplicationBuilder builder)
+    public static async Task<WebApplicationBuilder> AddCosmosDb(this WebApplicationBuilder builder)
     {
         var configuration = builder.Configuration;
-        var cosmosDbConfig = configuration
-            .GetSection("ConnectionStrings:CosmosDb")
+        var settings = configuration
+            .GetSection("CosmosDb")
             .Get<CosmosDbSettings>()!;
         
-        var client = new CosmosClient(cosmosDbConfig.EndpointUrl, cosmosDbConfig.PrimaryKey);
-        
-        client.CreateDatabaseIfNotExistsAsync(cosmosDbConfig.DatabaseName);
-        
+        var client = new CosmosClient(settings.EndpointUri, settings.PrimaryKey);
+
+        await CreateDatabaseAndContainerAsync(client, settings);
+        RegisterCosmosDbClientFactory(client, settings, ref builder);
+
+        return builder;
+    }
+
+    private static async Task CreateDatabaseAndContainerAsync(CosmosClient client, CosmosDbSettings settings)
+    {
+        var response = await client.CreateDatabaseIfNotExistsAsync(settings.DatabaseName);
+        foreach (var container in settings.Containers)
+        {
+            await response.Database.CreateContainerAsync(container.Name, container.PartitionKey, 400);
+        }
+    }
+
+    private static void RegisterCosmosDbClientFactory(CosmosClient client, CosmosDbSettings settings, 
+        ref WebApplicationBuilder builder)
+    {
         var cosmosDbClientFactory = new CosmosDbContainerFactory(client, 
-            cosmosDbConfig.DatabaseName, 
-            cosmosDbConfig.Containers);
+            settings.DatabaseName, 
+            settings.Containers);
         
         builder.Services.AddSingleton<ICosmosDbContainerFactory>(cosmosDbClientFactory);
-        
-        return builder;
     }
 }

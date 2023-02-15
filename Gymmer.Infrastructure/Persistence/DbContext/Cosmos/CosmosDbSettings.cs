@@ -5,7 +5,7 @@ public class CosmosDbSettings
     /// <summary>
     ///     CosmosDb Account - The Azure Cosmos DB endpoint
     /// </summary>
-    public string EndpointUrl { get; set; } = string.Empty;
+    public string EndpointUri { get; set; } = string.Empty;
 
     /// <summary>
     ///     Key - The primary key for the Azure DocumentDB account.
