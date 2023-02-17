@@ -13,7 +13,21 @@ public static class WebApplicationBuilderExtensions
             .GetSection("CosmosDb")
             .Get<CosmosDbSettings>()!;
         
-        var client = new CosmosClient(settings.EndpointUri, settings.PrimaryKey);
+        CosmosClientOptions cosmosClientOptions = new CosmosClientOptions()
+        {
+            HttpClientFactory = () =>
+            {
+                HttpMessageHandler httpMessageHandler = new HttpClientHandler()
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+
+                return new HttpClient(httpMessageHandler);
+            },
+            ConnectionMode = ConnectionMode.Gateway
+        };
+        
+        var client = new CosmosClient(settings.EndpointUri, settings.PrimaryKey, cosmosClientOptions);
 
         await CreateDatabaseAndContainerAsync(client, settings);
         RegisterCosmosDbClientFactory(client, settings, ref builder);
