@@ -23,6 +23,7 @@ public class ValidationMessageExtensions_Tests
 
         // Assert
         message
+            .Message
             .Should()
             .Be(
                 "First param is placed here 'Param nr 1', third here 'Param nr 3', second here 'Param nr 2', fourth is 'omitted'.");

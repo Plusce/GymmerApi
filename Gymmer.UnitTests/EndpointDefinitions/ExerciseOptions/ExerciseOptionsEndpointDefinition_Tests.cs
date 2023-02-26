@@ -19,8 +19,8 @@ public class ExerciseOptionsEndpointDefinition_Tests
         // Arrange
         _exerciseOptionsRepository.FindAllAsync().ReturnsForAnyArgs(new List<ExerciseOptionModel?>
         {
-            new() { Name = "Zakroki", Description = "Spokojne tempo do tyłu i do przodu" },
-            new() { Name = "Wyciskanie bokiem", Description = "Ćwiczenie w celu otwierania 2x w tygodniu" }
+            new() { Id = 1, Name = "Zakroki", Description = "Spokojne tempo do tyłu i do przodu" },
+            new() { Id = 2, Name = "Wyciskanie bokiem", Description = "Ćwiczenie w celu otwierania 2x w tygodniu" }
         });
 
         // Act
@@ -28,9 +28,13 @@ public class ExerciseOptionsEndpointDefinition_Tests
             await GetExerciseOption.Query(_exerciseOptionsRepository, CancellationToken.None);
 
         // Assert
-        result.As<Ok<List<string?>?>>().Value.Should()
-            .BeEquivalentTo("Zakroki", "Wyciskanie bokiem");
-        result.As<Ok<List<string?>?>>().StatusCode.Should().Be(200);
+        result.As<Ok<List<ExerciseOptionDto>>>().Value.Should()
+            .BeEquivalentTo(new List<ExerciseOptionDto>
+            {
+                new ExerciseOptionDto { Id = 1, Name = "Zakroki" },
+                new ExerciseOptionDto { Id = 2, Name = "Wyciskanie bokiem" }
+            });
+        result.As<Ok<List<ExerciseOptionDto>>>().StatusCode.Should().Be(200);
     }
 
     [Fact]
@@ -82,7 +86,7 @@ public class ExerciseOptionsEndpointDefinition_Tests
         // Assert
         result.As<Accepted>().StatusCode.Should().Be(202);
     }
-    
+
     [Fact]
     public async Task Delete_RemoveExerciseOption_Successfully()
     {

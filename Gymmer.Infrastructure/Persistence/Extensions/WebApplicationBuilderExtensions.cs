@@ -38,9 +38,11 @@ public static class WebApplicationBuilderExtensions
     private static async Task CreateDatabaseAndContainerAsync(CosmosClient client, CosmosDbSettings settings)
     {
         var response = await client.CreateDatabaseIfNotExistsAsync(settings.DatabaseName);
-        foreach (var container in settings.Containers)
+        foreach (var containerToCreate in settings.Containers)
         {
-            await response.Database.CreateContainerAsync(container.Name, container.PartitionKey, 400);
+            var container = response.Database.GetContainer(containerToCreate.Name);
+            if(container == null)
+                await response.Database.CreateContainerAsync(containerToCreate.Name, containerToCreate.PartitionKey, 400);
         }
     }
 

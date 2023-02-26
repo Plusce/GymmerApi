@@ -6,8 +6,18 @@ internal static class GetTrainingDefinitions
         async (repository, ct) =>
         {
             var trainingDefinitions = (await repository.FindAllAsync(ct))
-                .Select(party => party?.Name)
+                .Select(party => new TrainingDefinitionDto
+                {
+                    Id = party!.Id,
+                    Name = party.Name
+                })
                 .ToList();
             return trainingDefinitions.Count < 1 ? Results.Empty : Results.Ok(trainingDefinitions);
         };
+}
+
+public record TrainingDefinitionDto
+{
+    public long Id { get; init; }
+    public string Name { get; init; } = string.Empty;
 }
