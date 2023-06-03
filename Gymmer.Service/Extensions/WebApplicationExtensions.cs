@@ -35,8 +35,6 @@ public static class WebApplicationExtensions
             return app;
         }
 
-        dbContext.Seed();
-
         app.Logger.LogInformation("Executing seeding.");
 
         dbContext.Seed();
